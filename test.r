@@ -40,10 +40,8 @@ gradient_descent <- function(x, y, theta, learning_rate, n_iter) {
     return(list(theta = theta, cost_history = cost_history))
 }
 
-
+# test avec data_breast_cancer
 data <- read_excel("breast.xlsx")
-
-# Régression logistique et descente de gradient
 
 y <- data[, ncol(data)]
 y <- ifelse(y == "malignant", 1, 0)
