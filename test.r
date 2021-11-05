@@ -1,6 +1,7 @@
 library(readxl)
+library(ggplot2)
 
-# sigmoid function 
+# sigmoid function
 sigmoid <- function(x) {
     return(1 / (1 + exp(-x)))
 }
@@ -29,27 +30,18 @@ gradient <- function(x, y, theta) {
     return((1 / m) * x_dot_theta(t(x), probability(x, theta) - y))
 }
 
-# Gradient descent 
-optimisation <- function(x, y, theta, learning_rate) {
-    gradient <- gradient(x, y, theta)
-    theta <- theta - learning_rate * gradient
-    return(theta)
-}
-
-# batch descent gradient, modifier selon le mode stochastique ou mini batch
-logistic_regression <- function(x, y, learning_rate = 0.1, n_iter = 100) {
-    # Initialisation des paramètres
-    theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-
-    # Optimisation des paramètres pour un certain nombre d'itérations
-    for (i in range(n_iter)) {
-        theta <- optimisation(x, y, theta, learning_rate)
-        print(theta)
+# Gradient descent
+gradient_descent <- function(x, y, theta, learning_rate, n_iter) {
+    cost_history <- c(cost_function(x, y, theta))
+    for (i in 1:n_iter) {
+        theta <- theta - learning_rate * gradient(x, y, theta)
+        cost_history <- c(cost_history, cost_function(x, y, theta))
     }
-    return(theta)
+    return(list(theta = theta, cost_history = cost_history))
 }
 
-data <- read_excel("M2_RPackage/breast.xlsx")
+
+data <- read_excel("breast.xlsx")
 
 # Régression logistique et descente de gradient
 
@@ -59,10 +51,16 @@ y <- ifelse(y == "malignant", 1, 0)
 
 x <- data[, 1:(ncol(data) - 1)]
 
-theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-
-
+ # Ajout de la colonne de 1 pour faire le produit scalaire
 x <- as.matrix(data.frame(rep(1, length(y)), x))
-n <- dim(x)
 
-best_theta <- logistic_regression(x, y, learning_rate = 0.1, n_iter = 500)
+# Initialisation des paramètres theta
+initial_theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
+
+res <- gradient_descent(x, y, initial_theta, learning_rate = 0.1, n_iter = 200)
+
+print(res$theta)
+print(res$cost_history)
+
+
+plot(1:length(res$cost_history), res$cost_history)
