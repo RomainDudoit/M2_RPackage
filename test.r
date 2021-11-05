@@ -37,12 +37,16 @@ gradient_descent <- function(x, y, theta, learning_rate, n_iter) {
         theta <- theta - learning_rate * gradient(x, y, theta)
         cost_history <- c(cost_history, cost_function(x, y, theta))
     }
-    return(list(theta = theta, cost_history = cost_history))
+    return(list(parameters = matrix(theta), cost_history = cost_history))
+}
+
+predict <- function(x, theta, thresold = 0.5) {
+    predictions = unlist(ifelse(probability(x, theta) > thresold, 1, 0))
+    return(predictions)
 }
 
 # test avec data_breast_cancer
 data <- read_excel("breast.xlsx")
-
 y <- data[, ncol(data)]
 y <- ifelse(y == "malignant", 1, 0)
 
@@ -55,10 +59,12 @@ x <- as.matrix(data.frame(rep(1, length(y)), x))
 # Initialisation des paramètres theta
 initial_theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 
+# Entrainement
 res <- gradient_descent(x, y, initial_theta, learning_rate = 0.1, n_iter = 200)
+y_pred <- predict(x, res$parameters)
 
-print(res$theta)
+print(res$parameters)
 print(res$cost_history)
+plot(seq(1, length(res$cost_history)), res$cost_history, type = "l")
 
-
-plot(1:length(res$cost_history), res$cost_history)
+accuracy <- mean(y_pred == y)
