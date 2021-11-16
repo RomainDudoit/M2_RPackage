@@ -23,7 +23,7 @@ cost_function <- function(x, y, theta) {
     return(j)
 }
 
-# Gradient
+# Gradient : calcul des dérivées partielles de chacun des paramètres de theta
 gradient <- function(x, y, theta) {
     m <- nrow(y)
     return((1 / m) * x_dot_theta(t(x), probability(x, theta) - y))
@@ -34,7 +34,7 @@ gradient_descent <- function(x, y, theta, learning_rate, n_iter, mode) {
     cost_history <- c(cost_function(x, y, theta))
     for (i in 1:n_iter) {
         # mise à jour des paramètres
-        theta <- theta - learning_rate * gradient(x, y, theta) 
+        theta <- theta - learning_rate * gradient(x, y, theta)
         cost_history <- c(cost_history, cost_function(x, y, theta))
     }
     return(list(parameters = matrix(theta), cost_history = cost_history))
