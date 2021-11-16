@@ -15,7 +15,6 @@ probability <- function(x, theta) {
     return(sigmoid(x_dot_theta(x, theta)))
 }
 
-
 # cost function
 cost_function <- function(x, y, theta) {
     m <- nrow(y)
@@ -31,10 +30,11 @@ gradient <- function(x, y, theta) {
 }
 
 # Gradient descent
-gradient_descent <- function(x, y, theta, learning_rate, n_iter) {
+gradient_descent <- function(x, y, theta, learning_rate, n_iter, mode) {
     cost_history <- c(cost_function(x, y, theta))
     for (i in 1:n_iter) {
-        theta <- theta - learning_rate * gradient(x, y, theta)
+        # mise à jour des paramètres
+        theta <- theta - learning_rate * gradient(x, y, theta) 
         cost_history <- c(cost_history, cost_function(x, y, theta))
     }
     return(list(parameters = matrix(theta), cost_history = cost_history))
@@ -68,3 +68,4 @@ print(res$cost_history)
 plot(seq(1, length(res$cost_history)), res$cost_history, type = "l")
 
 accuracy <- mean(y_pred == y)
+print(accuracy)
