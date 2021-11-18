@@ -1,1 +1,1 @@
-# RPackage__LogReg_with_StochasticGradient_and_ParallelComputing
+## Sujet du projet : Sujet Projet SISE - Prog R - 2021-2022.pdf
