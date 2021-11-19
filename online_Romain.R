@@ -13,8 +13,11 @@ sigmoid <- function(x) {
 #}
 
 x_dot_theta <- function(x, theta) {
-  return(x * t(theta))
+  return(x * theta)
 }
+x[1,] * initial_theta
+x[1,] * t(initial_theta)
+t(x[1,]) * initial_theta
 
 t(x[1,]) %*% initial_theta
 
@@ -23,9 +26,9 @@ probability <- function(x, theta) {
 }
 
 # cost function
-cost_function <- function(x, y, theta, mode) {
+cost_function <- function(x, y, theta) {
   if(!is.null(nrow(y))) m <- nrow(y) else m <- 1
-  g <- probability(x, theta)
+  g <- sigmoid(x %*% theta)
   j <- (1 / m) * sum((-y * log(g)) - ((1 - y) * log(1 - g)))
   return(j)
 }
@@ -39,7 +42,7 @@ j <- (1 / m) * sum((-y * log(g)) - ((1 - y) * log(1 - g)))
 # Gradient
 gradient <- function(x, y, theta,mode,n_iter) {
     if(!is.null(nrow(y))) m <- nrow(y) else m <- 1
-    return((1 / m) * x_dot_theta(t(x), probability(x, theta) - y))
+    return((1 / m) * x_dot_theta(x, probability(x, theta) - y))
 }
 
 sum((-y * log(probability(x[1,], initial_theta))))
@@ -57,23 +60,23 @@ x_dot_theta(t(x),(x %*% initial_theta)-y)
 # Gradient descent
 gradient_descent <- function(x, y, theta, learning_rate, n_iter, mode) {
   cost_history <- c()
-  for (epoch in n_iter){
+  for (epoch in 1:n_iter){
     for (i in 1:length(y)) {
-      if (mode == "batch"){
-        theta <- theta - learning_rate * gradient(x, y, theta, mode, i)
-        cost_history <- c(cost_history, cost_function(x, y, theta, mode))
-      }
-      else if (mode == "sto") {
+      if (mode == "sto") {
         stochasticList <- sample(1:length(y), length(y), replace=FALSE)
-        y_sample <- y[stochasticList[i],]
+        y_sample <- y[stochasticList[i]]
         x_sample <- x[stochasticList[i],]
-        theta <- theta - t(learning_rate * gradient(x_sample, y_sample, theta, mode, i))
-        cost_history <- c(cost_history, cost_function(x_sample, y_sample, theta, mode))
-      
-    }}}
+        theta <- theta - learning_rate * gradient(x_sample, y_sample, theta)
+      }}
+    print(paste("epoch",epoch))
+    cost_history <- c(cost_history, cost_function(x, y, theta))
+  }
   return(list(parameters = matrix(theta), cost_history = cost_history))
 }
 
+r = c(2)
+m = c(r,5)
+m
 initial_theta - t(t)
 t <- 0.1 * gradient(x_sample, y_sample, initial_theta, mode="sto", 1)
 
@@ -92,7 +95,7 @@ c <- c(b,0)
 c
 # test avec data_breast_cancer
 library(readxl)
-data <- read_excel("/Users/pierre/Documents/M2/Cours_M2/R/data.xlsx")
+data <- read_excel("/Users/pierre/Documents/M2/Cours_M2/R/Projet/data.xlsx")
 y <- data[, ncol(data)]
 y <- ifelse(y == "malignant", 1, 0)
 
@@ -104,11 +107,9 @@ x <- as.matrix(data.frame(rep(1, length(y)), x))
 # Initialisation des paramètres theta
 initial_theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 # Entrainement
-res <- gradient_descent(x, y, initial_theta, learning_rate = 0.1, n_iter = 10000,mode = "sto")
+res <- gradient_descent(x, y, initial_theta, learning_rate = 0.01, n_iter = 500,mode = "sto")
 res$cost_history
 y_pred <- predict(x, res$parameters)
-
-predictions = unlist(ifelse(probability(x, initial_theta) > 0.5, 1, 0))
 
 print(res$parameters)
 print(res$cost_history)
