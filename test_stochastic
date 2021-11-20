@@ -85,13 +85,15 @@ learning_rate <- 0.1
 data_frame = model.frame(classe~clump,data=data)
 
 y <- matrix(ifelse(data_frame[, 1] == "malignant",1,0))
+x <- data_frame[, -1]
 x <- as.matrix(data.frame(rep(1, length(y)), x))
 
-x <- data_frame[, -1]
+
 x <- as.matrix(data.frame(rep(1, length(y)), x))
 dim(x)
 
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
+ random_index <- sample(x = m, size = m)
 print(y[random_index[1:1 + batch_size],])
 
 y_i = c()
