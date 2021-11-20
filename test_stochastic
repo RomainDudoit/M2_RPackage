@@ -107,7 +107,7 @@ for (i in index){
 trunc(m/batch_size)
 
 for (i in 1:trunc(m/batch_size)) {
-    x_i <- x[index[[i]]:index[[i+1]],]
+    y_i <- x[index[[i]]:index[[i+1]],]
     print(x_i)
 
 }
