@@ -79,35 +79,47 @@ gradient(x,y,initial_theta)
 data <- read_excel("breast.xlsx")
 m <- nrow(data)
 n_iter <- 10
-batch_size <- 35
+batch_size <- 10
 learning_rate <- 0.1
 
-data_frame = model.frame(classe~clump,data=data)
+data_frame = model.frame(classe~clump, data = data)
 
-y <- matrix(ifelse(data_frame[, 1] == "malignant",1,0))
+y <- matrix(ifelse(data_frame[, 1] == "malignant", 1, 0))
 x <- data_frame[, -1]
 x <- as.matrix(data.frame(rep(1, length(y)), x))
 
-
-x <- as.matrix(data.frame(rep(1, length(y)), x))
-dim(x)
-
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
- random_index <- sample(x = m, size = m)
-print(y[random_index[1:1 + batch_size],])
 
-y_i = c()
-x_i = c()
-for (i in seq(1, m, batch_size)) {
+x <- as.matrix(x[random_index, ])
+y <- as.matrix(y[random_index, ])
 
-    y_i <- rbind(y_i, y[random_index[i:i + batch_size], ])
-    x_i <- rbind(x_i, x[random_index[i:i + batch_size], ])
+x_i <- c()
+y_i <- c()
+
+index = seq(1,m,batch_size-1)
+
+for (i in index){
+    print(i)
+    print("hello")
+    print(i+1)
+}
+
+trunc(m/batch_size)
+
+for (i in 1:trunc(m/batch_size)) {
+    x_i <- x[index[[i]]:index[[i+1]],]
+    print(x_i)
 
 }
 
 for (i in 1:n_iter) {
     random_index <- sample(x = m, size = m)
-    theta <- theta - learning_rate * gradient(x[random_index, ], as.matrix(y[random_index, ]), theta)
+    x <- as.matrix(x[random_index, ])
+    y <- y[random_index, ]
+    y_i = c()
+    x_i = c()
+
+    theta <- theta - learning_rate * gradient(x_i, y_i, theta)
 }
 
 x_dot_theta(t(x), probability(x, initial_theta) - y)
