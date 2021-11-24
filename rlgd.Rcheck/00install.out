@@ -6,6 +6,9 @@ It is recommended to use 'given' instead of 'middle'.
 *** moving datasets to lazyload DB
 ** inst
 ** byte-compile and prepare package for lazy loading
+Note: possible error in 'gradient(x[random_index, ': argument inutilisé (theta) 
+Note: possible error in 'gradient(x_i, y_i, theta)': argument inutilisé (theta) 
+Note: possible error in 'gradient(x_i, y_i, theta)': argument inutilisé (theta) 
 ** help
 *** installing help indices
 ** building package indices

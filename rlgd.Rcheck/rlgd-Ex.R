@@ -88,7 +88,7 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 ### ** Examples
 
-gradient(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)))
+gradient(blocs[[1]],as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)))
 
 
 
