@@ -1,0 +1,12 @@
+batch_gradient_descent
+                        Gradient Descent Function - Batch
+cost_function           Cost function
+get_x_y                 get_x_y function
+gradient                Gradient function
+mini_batch_gradient_descent
+                        Gradient Descent Function - Mini-Batch
+probability             Probability function
+sigmoid                 Sigmoid function
+stochastic_gradient_descent
+                        Gradient Descent Function - Stochastic
+x_dot_theta             x_dot_tetha function
