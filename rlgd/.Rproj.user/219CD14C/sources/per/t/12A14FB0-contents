@@ -14,7 +14,8 @@ Suggests:
     rmarkdown
 VignetteBuilder: knitr
 Imports:
-  formula.tools
+  formula.tools,
+  parallel
 Depends: 
     R (>= 2.10)
 LazyData: true

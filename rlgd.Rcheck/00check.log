@@ -95,10 +95,9 @@ The error most likely occurred in:
 > 
 > ### ** Examples
 > 
-> batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,1e-4,3)
-Error in parallelisation(x[random_index, ], as.matrix(y[random_index,  : 
-  argument "ncores" is missing, with no default
-Calls: batch_gradient_descent -> parallelisation
+> batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,1e-4,ncores=3)
+Error in .check_ncores(length(names)) : 3 simultaneous processes spawned
+Calls: batch_gradient_descent ... parallelisation -> <Anonymous> -> makePSOCKcluster -> .check_ncores
 Execution halted
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in 'inst/doc' ... OK

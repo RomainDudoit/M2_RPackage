@@ -39,5 +39,5 @@ an instance
 Fit function
 }
 \examples{
-fit(classe ~ .,data,"batch",32,0.5,100,1e-4,1)
+fit(classe ~ .,data,"batch",32,0.5,100,1e-4,3)
 }

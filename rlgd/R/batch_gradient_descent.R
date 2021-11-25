@@ -12,7 +12,7 @@
 #' @export
 #'
 #' @examples
-#' batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,1e-4,3)
+#' batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,1e-4,ncores=3)
 batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter, tol,ncores) {
 
   cost_history <- c()
@@ -23,7 +23,7 @@ batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter, tol,nco
   while ((iter < max_iter) && (converge == FALSE)) {
     iter <- iter + 1
     random_index <- sample(x = m, size = m)
-    new_theta <- theta - learning_rate * parallelisation(x[random_index, ],as.matrix(y[random_index, ],ncores,gradient_parallele,theta = theta))
+    new_theta <- theta - learning_rate * parallelisation(x[random_index, ],as.matrix(y[random_index, ]), ncores, gradient_parallele, theta = theta)
     cost_history <- c(cost_history, cost_function(x[random_index, ], as.matrix(y[random_index, ]), new_theta))
 
 

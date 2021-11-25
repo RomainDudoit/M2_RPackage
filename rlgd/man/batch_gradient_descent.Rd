@@ -28,5 +28,5 @@ a list containing 2 matrices : matrix of theta and matrix of cost history
 Gradient Descent Function - Batch
 }
 \examples{
-batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,1e-4,3)
+batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,1e-4,ncores=3)
 }

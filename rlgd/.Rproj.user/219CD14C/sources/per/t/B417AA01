@@ -3,7 +3,7 @@
     "path": "~/GitHub/M2_RPackage/rlgd/NAMESPACE",
     "project_path": "NAMESPACE",
     "type": "r_namespace",
-    "hash": "0",
+    "hash": "1250810632",
     "contents": "",
     "dirty": false,
     "created": 1637761781711.0,
@@ -16,11 +16,11 @@
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1637836877,
+    "lastKnownWriteTime": 1637839122,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1637836877,
-    "read_only": false,
+    "last_content_update": 1637839122,
+    "read_only": true,
     "read_only_alternatives": []
 }

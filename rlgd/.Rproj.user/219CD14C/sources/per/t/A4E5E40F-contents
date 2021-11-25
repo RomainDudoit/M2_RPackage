@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' fit(classe ~ .,data,"batch",32,0.5,100,1e-4,1)
+#' fit(classe ~ .,data,"batch",32,0.5,100,1e-4,3)
 fit <- function(formula, data, mode, batch_size, learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 1) {
   x_y <- get_x_y(formula, data)
 
