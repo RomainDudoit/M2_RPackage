@@ -1,0 +1,25 @@
+---
+title: "how-use-the-package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{how-use-the-package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lrgd)
+```
+
+
+```{r}
+data <- data("breast_cancer")
+```
+
