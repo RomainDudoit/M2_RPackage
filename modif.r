@@ -17,8 +17,31 @@ get_x_y <- function(formula, data) {
 }
 
 ##############################################################################################################
+parallelisation <- function(x, y, ncores, fonction, theta){
+    #Création des blocs
+    m <- nrow(y)
+    blocs_size <- trunc((m / ncores))
+    blocs <- list()
+    index <- append(round(seq(1, m, by = m/ncores)),m)
+    for (j in 1:(length(index)-1)) {
+        if (j==length(index)-1) reglage_borne <- 0 else reglage_borne <- 1
+        y_i <- as.matrix(y[index[[j]]:(index[[j + 1]] - reglage_borne), ])
+        x_i <- as.matrix(x[index[[j]]:(index[[j + 1]] - reglage_borne), ])
+        blocs[[j]] <- list(x_i, y_i)
+    }
+    
+    #Parallel
+    clust <- parallel::makeCluster(ncores)
+    clusterExport(clust, c("x_dot_theta" ,"sigmoid" ,"probability" , "cost_function", "get_x_y"), # nolint
+                  envir=environment())
+    
+    res <- parallel::parSapply(clust, X = blocs, FUN = fonction, theta = theta) # nolint
+    parallel::stopCluster(clust)
+    return(t(t(rowSums(res))))
+}
+##############################################################################################################
 
-batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter, tol) {
+batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter, tol,ncores) {
     
     cost_history <- c()
     m <- nrow(y)
@@ -28,7 +51,7 @@ batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter, tol) {
     while ((iter < max_iter) && (converge == FALSE)) {
         iter <- iter + 1
         random_index <- sample(x = m, size = m)
-        new_theta <- theta - learning_rate * gradient(x[random_index, ], as.matrix(y[random_index, ]), theta)
+        new_theta <- theta - learning_rate * parallelisation(x[random_index, ],as.matrix(y[random_index, ],ncores,gradient_parallele,theta = theta))
         cost_history <- c(cost_history, cost_function(x[random_index, ], as.matrix(y[random_index, ]), new_theta))
 
 
@@ -41,6 +64,13 @@ batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter, tol) {
     return(list(theta = theta, cost_history = cost_history))
 }
 
+##############################################################################################################
+gradient_parallele <- function(X, theta) {
+    x <- X[[1]]
+    y <- X[[2]]
+    m <- nrow(y)
+    return((1 / m) * x_dot_theta(t(x), probability(x, theta) - y)) # nolint
+}
 ##############################################################################################################
 
 stochastic_gradient_descent <- function(x, y, theta, learning_rate, max_iter, tol) {
@@ -114,7 +144,7 @@ mini_batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter, ba
 ##############################################################################################################
 
 # Gradient descent
-fit <- function(formula, data, mode, batch_size, learning_rate = 0.5, max_iter = 100, tol = 1e-4) { 
+fit <- function(formula, data, mode, batch_size, learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 1) { 
     x_y <- get_x_y(formula, data) 
 
     x <- x_y$features
@@ -126,7 +156,7 @@ fit <- function(formula, data, mode, batch_size, learning_rate = 0.5, max_iter =
     initial_theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 
     if (mode == "batch" || (mode == "mini-batch" && batch_size >= nrow(y))) {
-        gradient_descent <- batch_gradient_descent(x, y, initial_theta, learning_rate, max_iter, tol) 
+        gradient_descent <- batch_gradient_descent(x, y, initial_theta, learning_rate, max_iter, tol, ncores) 
     } else if (mode == "online" || (mode == "mini-batch" && batch_size == 1)) { 
         gradient_descent <- stochastic_gradient_descent(x, y, initial_theta, learning_rate, max_iter, tol) 
     } else if (mode == "mini-batch") {
