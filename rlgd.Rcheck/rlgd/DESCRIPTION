@@ -15,7 +15,7 @@ Imports: formula.tools
 Depends: R (>= 2.10)
 LazyData: true
 NeedsCompilation: no
-Packaged: 2021-11-24 14:48:53 UTC; chloe
+Packaged: 2021-11-25 10:41:23 UTC; chloe
 Author: Pierre Le Galeze Chloe Danet Romain Dudoit [aut, cre] (YOUR-ORCID-ID)
 Maintainer: Pierre Le Galeze Chloe Danet Romain Dudoit <first.last@example.com>
-Built: R 4.0.3; ; 2021-11-24 14:48:57 UTC; windows
+Built: R 4.0.3; ; 2021-11-25 10:41:28 UTC; windows

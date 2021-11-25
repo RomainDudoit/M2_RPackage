@@ -1,10 +1,14 @@
 batch_gradient_descent
                         Gradient Descent Function - Batch
 cost_function           Cost function
+fit                     Fit function
 get_x_y                 get_x_y function
 gradient                Gradient function
+gradient_parallele      Gradient function for the parallel use
 mini_batch_gradient_descent
                         Gradient Descent Function - Mini-Batch
+parallelisation         Parallelisation function
+predict                 Predict function
 probability             Probability function
 sigmoid                 Sigmoid function
 stochastic_gradient_descent

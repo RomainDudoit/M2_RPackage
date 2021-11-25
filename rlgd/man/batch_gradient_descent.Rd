@@ -4,7 +4,7 @@
 \alias{batch_gradient_descent}
 \title{Gradient Descent Function - Batch}
 \usage{
-batch_gradient_descent(x, y, theta, learning_rate, n_iter)
+batch_gradient_descent(x, y, theta, learning_rate, max_iter, tol, ncores)
 }
 \arguments{
 \item{x}{a matrix}
@@ -15,14 +15,18 @@ batch_gradient_descent(x, y, theta, learning_rate, n_iter)
 
 \item{learning_rate}{a float}
 
-\item{n_iter}{a integer}
+\item{max_iter}{a integer}
+
+\item{tol}{a numeric}
+
+\item{ncores}{a integer}
 }
 \value{
-
+a list containing 2 matrices : matrix of theta and matrix of cost history
 }
 \description{
 Gradient Descent Function - Batch
 }
 \examples{
-batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100)
+batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,1e-4,3)
 }

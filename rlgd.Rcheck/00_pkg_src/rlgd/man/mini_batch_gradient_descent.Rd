@@ -4,7 +4,15 @@
 \alias{mini_batch_gradient_descent}
 \title{Gradient Descent Function - Mini-Batch}
 \usage{
-mini_batch_gradient_descent(x, y, theta, learning_rate, n_iter, batch_size)
+mini_batch_gradient_descent(
+  x,
+  y,
+  theta,
+  learning_rate,
+  max_iter,
+  batch_size,
+  tol
+)
 }
 \arguments{
 \item{x}{a matrix}
@@ -15,16 +23,18 @@ mini_batch_gradient_descent(x, y, theta, learning_rate, n_iter, batch_size)
 
 \item{learning_rate}{a float}
 
-\item{n_iter}{a integer}
+\item{max_iter}{a integer}
 
 \item{batch_size}{a integer}
+
+\item{tol}{a numeric}
 }
 \value{
-
+a list containing 2 matrices : matrix of theta and matrix of cost history
 }
 \description{
 Gradient Descent Function - Mini-Batch
 }
 \examples{
-mini_batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,32)
+mini_batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,32,1e-4)
 }

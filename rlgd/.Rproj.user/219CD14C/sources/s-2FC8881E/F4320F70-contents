@@ -1,0 +1,86 @@
+#packages
+library(parallel)
+library(doParallel)
+library(foreach)
+
+#fonction pour calculer la valeur max et min d'un vecteur
+my_maxmin <- function(x){
+  #copie locale
+  vec <- x
+  n <- length(vec)
+  #tri ? bulles -- https://fr.wikipedia.org/wiki/Tri_?_bulles
+  for (i in n:2){
+    for (j in 1:(i-1)){
+      if (vec[j+1] < vec[j]){
+        temp <- vec[j+1]
+        vec[j+1] <- vec[j]
+        vec[j] <- temp
+      }
+    }
+  }
+  #r?cup?rer le min et le max apr?s le tri
+  return(c(vec[1],vec[n]))
+}
+
+#fonction, calcul de l'?tendue en mode s?quentiel
+etendue_sequentiel <- function(x){
+  min_max <- my_maxmin(x)
+  return(min_max[2] - min_max[1])
+}
+
+#g?n?ration des donn?es
+n <- 10000
+v <- rnorm(n)
+
+#mode s?quentiel
+print(system.time(res <- etendue_sequentiel(v)))
+print(res)
+
+#fonction, calcul en mode parall?le
+#4 coeurs sollicit?s par d?faut
+etendue_parallele <- function(x, ncores = 4) {
+  n <- length(x)
+  #initialiser les moteurs
+  clust <- parallel::makeCluster(ncores)
+  #splitter les donn?es
+  blocs <- split(x, 1 + (1:n) %% ncores)
+  #resultats interm?diaires
+  res_intermed <- parSapply(clust, blocs, my_maxmin)
+  #fermer les moteurs
+  parallel::stopCluster(clust)
+  #max des maxis
+  maxi <- max(res_intermed[2, ])
+  #min des mins
+  mini <- min(res_intermed[1, ])
+  #?tendue
+  e <- maxi - mini
+  return(e)
+}
+
+#mode parall?le
+print(system.time(res_par <- etendue_parallele(v)))
+print(res_par)
+
+#fonction avec dopar
+etendue_parallele_bis <- function(x,ncores=4){
+  n <- length(x)
+  #initialiser les moteurs
+  doParallel::registerDoParallel(ncores)
+  #splitter les donn?es
+  blocs <- split(x, 1 + (1:n) %% ncores)
+  #resultats interm?diaires
+  res_intermed <- foreach::foreach(b=blocs,.combine=cbind,.export=c("my_maxmin")) %dopar% {return(my_maxmin(b))} 
+  #fermer les moteurs
+  doParallel::stopImplicitCluster()
+  #max des maxis
+  maxi <- max(res_intermed[2, ])
+  #min des mins
+  mini <- min(res_intermed[1, ])
+  #?tendue
+  e <- maxi - mini
+  return(e)  
+}
+
+#mode parall?le bis
+print(system.time(res_par_bis <- etendue_parallele_bis(v,4)))
+print(res_par_bis)

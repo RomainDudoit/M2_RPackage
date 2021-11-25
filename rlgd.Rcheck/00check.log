@@ -14,14 +14,7 @@
 * checking for hidden files and directories ... OK
 * checking for portable file names ... OK
 * checking serialization versions ... OK
-* checking whether package 'rlgd' can be installed ... WARNING
-Found the following significant warnings:
-  Note: possible error in 'gradient(x[random_index, ': argument inutilisé (theta) 
-  Note: possible error in 'gradient(x_i, y_i, theta)': argument inutilisé (theta) 
-See 'C:/Users/chloe/Documents/GitHub/M2_RPackage/rlgd.Rcheck/00install.out' for details.
-Information on the location(s) of code generating the 'Note's can be
-obtained by re-running with environment variable R_KEEP_PKG_SOURCE set
-to 'yes'.
+* checking whether package 'rlgd' can be installed ... OK
 * checking installed package size ... OK
 * checking package directory ... OK
 * checking for future file timestamps ... OK
@@ -44,46 +37,45 @@ to 'yes'.
 * checking replacement functions ... OK
 * checking foreign function calls ... OK
 * checking R code for possible problems ... NOTE
-batch_gradient_descent: possible error in gradient(x[random_index, ],
-  as.matrix(y[random_index, ]), theta): argument inutilisé (theta)
+fit: no visible global function definition for 'rnorm'
 get_x_y: no visible global function definition for 'model.frame'
-mini_batch_gradient_descent: possible error in gradient(x_i, y_i,
-  theta): argument inutilisé (theta)
-stochastic_gradient_descent: possible error in gradient(x_i, y_i,
-  theta): argument inutilisé (theta)
 Undefined global functions or variables:
-  model.frame
+  model.frame rnorm
 Consider adding
-  importFrom("stats", "model.frame")
+  importFrom("stats", "model.frame", "rnorm")
 to your NAMESPACE file.
 * checking Rd files ... NOTE
-prepare_Rd: batch_gradient_descent.Rd:20-22: Dropping empty section \value
-prepare_Rd: mini_batch_gradient_descent.Rd:22-24: Dropping empty section \value
-prepare_Rd: stochastic_gradient_descent.Rd:20-22: Dropping empty section \value
+prepare_Rd: gradient_parallele.Rd:12-14: Dropping empty section \value
 * checking Rd metadata ... OK
-* checking Rd line widths ... OK
+* checking Rd line widths ... NOTE
+Rd file 'parallelisation.Rd':
+  \examples lines wider than 100 characters:
+     parallelisation(x,y,ncores = 3,gradient_parallele, as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)))
+
+These lines will be truncated in the PDF manual.
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... WARNING
 Undocumented code objects:
-  'blocs' 'data' 'x' 'y'
+  'blocs' 'data' 'res_fit_batch' 'test_set' 'train_set' 'x' 'y'
 Undocumented data sets:
-  'blocs' 'data' 'x' 'y'
+  'blocs' 'data' 'res_fit_batch' 'test_set' 'train_set' 'x' 'y'
 All user-level objects in a package should have documentation entries.
 See chapter 'Writing R documentation files' in the 'Writing R
 Extensions' manual.
 * checking for code/documentation mismatches ... OK
 * checking Rd \usage sections ... WARNING
-Undocumented arguments in documentation object 'gradient'
+Undocumented arguments in documentation object 'gradient_parallele'
   'X'
-Documented arguments not in \usage in documentation object 'gradient':
-  'x' 'y'
 
 Functions with \usage entries need to have the appropriate \alias
 entries, and all their arguments documented.
 The \usage entries must correspond to syntactically valid R code.
 See chapter 'Writing R documentation files' in the 'Writing R
 Extensions' manual.
-* checking Rd contents ... OK
+* checking Rd contents ... WARNING
+Argument items with no description in Rd object 'gradient_parallele':
+  'theta'
+
 * checking for unstated dependencies in examples ... OK
 * checking contents of 'data' directory ... OK
 * checking data for non-ASCII characters ... OK
@@ -103,10 +95,10 @@ The error most likely occurred in:
 > 
 > ### ** Examples
 > 
-> batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100)
-Error in gradient(x[random_index, ], as.matrix(y[random_index, ]), theta) : 
-  unused argument (theta)
-Calls: batch_gradient_descent
+> batch_gradient_descent(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)),0.01,100,1e-4,3)
+Error in parallelisation(x[random_index, ], as.matrix(y[random_index,  : 
+  argument "ncores" is missing, with no default
+Calls: batch_gradient_descent -> parallelisation
 Execution halted
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in 'inst/doc' ... OK
@@ -114,4 +106,4 @@ Execution halted
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 4 WARNINGs, 2 NOTEs
+Status: 1 ERROR, 4 WARNINGs, 3 NOTEs

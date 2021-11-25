@@ -4,14 +4,14 @@
 \alias{gradient}
 \title{Gradient function}
 \usage{
-gradient(X, theta)
+gradient(x, y, theta)
 }
 \arguments{
-\item{theta}{a matrix}
-
 \item{x}{a matrix}
 
 \item{y}{a matrix}
+
+\item{theta}{a matrix}
 }
 \value{
 a matrix
@@ -20,5 +20,5 @@ a matrix
 Gradient function
 }
 \examples{
-gradient(blocs[[1]],as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)))
+gradient(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)))
 }
