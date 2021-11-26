@@ -21,8 +21,6 @@ library(rlgd)
 
 ```{r}
 data("breast_cancer")
-data <- breast_cancer
-data
 ```
 
 ```{r}
