@@ -1,4 +1,4 @@
-#' x_dot_theta function
+#' Probability function
 #'
 #' @param x a matrix
 #' @param theta a matrix
@@ -8,8 +8,9 @@
 #'
 #' @examples
 #' x <- as.matrix(breast_cancer[,1:4])
+#' y <- as.matrix(ifelse(breast_cancer$classe =="malignant",1,0))
 #' theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-#' x_dot_theta(x,theta)
-x_dot_theta <- function(x, theta) {
-  return(x %*% theta)
+#' probability(x,theta)
+probability <- function(x, theta) {
+  return(sigmoid(x_dot_theta(x, theta)))
 }
