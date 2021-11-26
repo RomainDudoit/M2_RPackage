@@ -6,7 +6,6 @@
 #' @return gradient
 #' @export
 #'
-#' @examples
 gradient_parallele <- function(X, theta) {
   x <- X[[1]]
   y <- X[[2]]

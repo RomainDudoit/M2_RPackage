@@ -9,10 +9,11 @@ rlgd.fit(
   data,
   mode,
   batch_size,
-  learning_rate = 0.5,
+  learning_rate = 0.1,
   max_iter = 100,
   tol = 1e-04,
-  ncores = 1
+  ncores = 1,
+  standardize = FALSE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ rlgd.fit(
 \item{tol}{a numeric}
 
 \item{ncores}{a integer}
+
+\item{standardize}{TRUE or FALSE}
 }
 \value{
 an instance

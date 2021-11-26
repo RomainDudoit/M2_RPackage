@@ -4,12 +4,14 @@
 \alias{get_x_y}
 \title{get_x_y_function}
 \usage{
-get_x_y(formula, data)
+get_x_y(formula, data, standardize)
 }
 \arguments{
 \item{formula}{a formula}
 
 \item{data}{a matrix}
+
+\item{standardize}{TRUE or FALSE}
 }
 \value{
 list(y,x,y_name,x_name), y & x = matrix, y_name & x_names = c()
@@ -18,5 +20,5 @@ list(y,x,y_name,x_name), y & x = matrix, y_name & x_names = c()
 get_x_y_function
 }
 \examples{
-get_x_y(classe ~., data=breast_cancer)
+get_x_y(classe ~., data=breast_cancer, standardize=TRUE)
 }
