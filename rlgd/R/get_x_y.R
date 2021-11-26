@@ -21,8 +21,9 @@ get_x_y <- function(formula, data, standardize) {
 
   y <- as.matrix(data[, y_name])
 
-  dmy <- dummyVars(formula, data)
+  dmy <- dummyVars(formula, data, drop2nd = TRUE)
   x <- predict(dmy, data)
+  binVars <- which(sapply(X, function(x){all(x %in% 0:1)}))
 
   if (standardize == TRUE){
     preprocessParams <- preProcess(x, method=c("center","scale"))
