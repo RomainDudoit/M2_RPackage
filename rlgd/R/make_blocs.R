@@ -27,4 +27,5 @@ make_blocs <- function(x, y, ncores){
     x_i <- as.matrix(x[index[[j]]:(index[[j + 1]] - reglage_borne), ])
     blocs[[j]] <- list(x_i, y_i)
   }
+  return(blocs)
 }

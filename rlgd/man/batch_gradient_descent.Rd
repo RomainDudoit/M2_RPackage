@@ -32,5 +32,6 @@ x <- as.matrix(breast_cancer[1:10,1:4])
 y <- breast_cancer[1:10,"classe"]
 y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-batch_gradient_descent(x,y,theta,learning_rate=0.01,max_iter=100,tol=1e-4,ncores=3)
+ncores <- 2
+batch_gradient_descent(x,y,theta,learning_rate=0.01,max_iter = 100,tol = 1e-4, ncores)
 }

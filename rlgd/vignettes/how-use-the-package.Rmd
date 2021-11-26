@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(rlgd)
+library(parallel)
 ```
 
 
@@ -53,8 +54,8 @@ cost_function(x,y,theta)
 ```
 
 ```{r}
-mini_batch_gradient_descent(x, y, theta, learning_rate=0.01, max_iter=10, batch_size =
-                              2, tol=1e-4)
+#batch_gradient_descent(x, y, theta, learning_rate=0.01, max_iter=100, tol=1e-4, ncores=4)
 ```
+
 
 

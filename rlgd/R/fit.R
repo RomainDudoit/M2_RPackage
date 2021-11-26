@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
-#' learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 3)
+#' learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 2)
 rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.5,
                      max_iter = 100, tol = 1e-4,ncores=1) {
   x_y <- get_x_y(formula, data)
@@ -44,7 +44,7 @@ rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.5,
 
 
   if (mode == "batch" || (mode == "mini-batch" && batch_size >= nrow(y))) {
-    gradient_descent <- batch_gradient_descent(x, y, initial_theta, learning_rate, max_iter, tol)
+    gradient_descent <- batch_gradient_descent(x, y, initial_theta, learning_rate, max_iter, tol, ncores)
   } else if (mode == "online" || (mode == "mini-batch" && batch_size == 1)) {
     gradient_descent <- stochastic_gradient_descent(x, y, initial_theta, learning_rate, max_iter, tol)
   } else if (mode == "mini-batch") {
