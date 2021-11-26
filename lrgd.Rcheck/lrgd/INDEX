@@ -1,0 +1,4 @@
+breast_cancer           Data of breast cancer
+get_x_y                 get_x_y_function
+sigmoid                 sigmoid function
+x_dot_theta             x_dot_tetha function
