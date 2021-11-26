@@ -14,10 +14,6 @@
 #' @export
 #'
 #' @examples
-#' x <- as.matrix(breast_cancer[1:20,1:4])
-#' y <- breast_cancer[1:20,"classe"]
-#'
-#' y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 #' rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
 #' learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 3)
 rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.5,
@@ -29,6 +25,20 @@ rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.5,
   y_name <- x_y$y_name
   x_names <- x_y$x_names
 
+  `%notin%` <- Negate(`%in%`)
+
+  if (all(y %notin% 0:1)){
+    y <- as.factor(y)
+    if (nlevels(x) > 2){
+      stop("fit function can only perform on binary target")
+    }else{
+      tmp <- levels(y)
+      levels(y) <- c(0, 1)
+      cat(tmp,"as been recoded respectively to 0, 1","\n")
+      y <- as.matrix(as.numeric(levels(y))[y])
+    }
+
+  }
 
   initial_theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 
@@ -44,7 +54,8 @@ rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.5,
   }
 
   # Creation of the instance
-  inst <- list(formula = formula, x = x, y = y, y_name = y_name, x_names = x_names, mode = mode, batch_size = batch_size, learning_rate = learning_rate, max_iter = max_iter, # nolint
+  inst <- list(formula = formula, x = x, y = y, y_name = y_name, x_names = x_names,
+               mode = mode, batch_size = batch_size, learning_rate = learning_rate, max_iter = max_iter,
                initial_theta = initial_theta, theta = gradient_descent[[1]], cost_history = gradient_descent[[2]]
   )
 
