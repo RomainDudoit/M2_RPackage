@@ -39,12 +39,7 @@
 * checking R code for possible problems ... OK
 * checking Rd files ... OK
 * checking Rd metadata ... OK
-* checking Rd line widths ... NOTE
-Rd file 'mini_batch_gradient_descent.Rd':
-  \examples lines wider than 100 characters:
-     mini_batch_gradient_descent(x,y,theta,learning_rate = 0.01, max_iter = 100,batch_size = 32, tol = 1e-4)
-
-These lines will be truncated in the PDF manual.
+* checking Rd line widths ... OK
 * checking Rd cross-references ... OK
 * checking for missing documentation entries ... OK
 * checking for code/documentation mismatches ... OK
@@ -62,19 +57,17 @@ Running examples in 'rlgd-Ex.R' failed
 The error most likely occurred in:
 
 > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: mini_batch_gradient_descent
-> ### Title: Gradient Descent Function - Mini-Batch
-> ### Aliases: mini_batch_gradient_descent
+> ### Name: rlgd.fit
+> ### Title: Fit function
+> ### Aliases: rlgd.fit
 > 
 > ### ** Examples
 > 
-> x <- as.matrix(breast_cancer[1:10,1:4])
-> y <- breast_cancer[1:10,"classe"]
-> y <- as.matrix(ifelse(y$classe =="malignant",1,0))
-> theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-> mini_batch_gradient_descent(x,y,theta,learning_rate = 0.01, max_iter = 100,batch_size = 32, tol = 1e-4)
-Error in index[[j + 1]] : subscript out of bounds
-Calls: mini_batch_gradient_descent -> as.matrix
+> rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
++ learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 3)
+Error in probability(x, theta) - y : 
+  non-numeric argument to binary operator
+Calls: rlgd.fit -> batch_gradient_descent -> gradient -> x_dot_theta
 Execution halted
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in 'inst/doc' ... OK
@@ -82,4 +75,4 @@ Execution halted
 * checking for non-standard things in the check directory ... OK
 * checking for detritus in the temp directory ... OK
 * DONE
-Status: 1 ERROR, 1 NOTE
+Status: 1 ERROR

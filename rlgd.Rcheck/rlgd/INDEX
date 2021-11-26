@@ -8,6 +8,7 @@ make_blocs              Creation of blocs for parallelisation
 mini_batch_gradient_descent
                         Gradient Descent Function - Mini-Batch
 probability             Probability function
+rlgd.fit                Fit function
 sigmoid                 sigmoid function
 stochastic_gradient_descent
                         Title

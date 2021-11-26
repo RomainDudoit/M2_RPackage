@@ -6,6 +6,7 @@ gradient	gradient
 make_blocs	make_blocs
 mini_batch_gradient_descent	mini_batch_gradient_descent
 probability	probability
+rlgd.fit	rlgd.fit
 sigmoid	sigmoid
 stochastic_gradient_descent	stochastic_gradient_descent
 x_dot_theta	x_dot_theta

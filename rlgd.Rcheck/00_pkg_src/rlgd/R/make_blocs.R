@@ -2,7 +2,7 @@
 #'
 #' @param x matrix
 #' @param y matrix
-#' @param ncores integer#'
+#' @param ncores integer
 #'
 #' @return blocs
 #' @export

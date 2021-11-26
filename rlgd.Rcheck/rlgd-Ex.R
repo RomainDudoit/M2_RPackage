@@ -161,11 +161,12 @@ base::assign(".ptime", proc.time(), pos = "CheckExEnv")
 
 ### ** Examples
 
-x <- as.matrix(breast_cancer[1:10,1:4])
-y <- breast_cancer[1:10,"classe"]
+x <- as.matrix(breast_cancer[1:20,1:4])
+y <- breast_cancer[1:20,"classe"]
 y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-mini_batch_gradient_descent(x,y,theta,learning_rate = 0.01, max_iter = 100,batch_size = 32, tol = 1e-4)
+mini_batch_gradient_descent(x,y,theta,learning_rate = 0.01, max_iter = 100,
+batch_size = 16, tol = 1e-4)
 
 
 
@@ -194,6 +195,26 @@ probability(x,theta)
 
 base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
 base::cat("probability", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+cleanEx()
+nameEx("rlgd.fit")
+### * rlgd.fit
+
+flush(stderr()); flush(stdout())
+
+base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+### Name: rlgd.fit
+### Title: Fit function
+### Aliases: rlgd.fit
+
+### ** Examples
+
+rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
+learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 3)
+
+
+
+base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+base::cat("rlgd.fit", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
 cleanEx()
 nameEx("sigmoid")
 ### * sigmoid

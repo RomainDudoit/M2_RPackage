@@ -28,3 +28,7 @@ probability(x,theta)
 ## -----------------------------------------------------------------------------
 cost_function(x,y,theta)
 
+## -----------------------------------------------------------------------------
+mini_batch_gradient_descent(x, y, theta, learning_rate=0.01, max_iter=10, batch_size =
+                              2, tol=1e-4)
+

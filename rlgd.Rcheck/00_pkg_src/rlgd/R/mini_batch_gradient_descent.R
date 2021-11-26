@@ -12,12 +12,14 @@
 #' @export
 #'
 #' @examples
-#' x <- as.matrix(breast_cancer[1:10,1:4])
-#' y <- breast_cancer[1:10,"classe"]
+#' x <- as.matrix(breast_cancer[1:20,1:4])
+#' y <- breast_cancer[1:20,"classe"]
 #' y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 #' theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-#' mini_batch_gradient_descent(x,y,theta,learning_rate = 0.01, max_iter = 100,batch_size = 32, tol = 1e-4)
-mini_batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter, batch_size, tol) {
+#' mini_batch_gradient_descent(x,y,theta,learning_rate = 0.01, max_iter = 100,
+#' batch_size = 16, tol = 1e-4)
+mini_batch_gradient_descent <- function(x, y, theta, learning_rate, max_iter,
+                                        batch_size, tol) {
 
   cost_history <- c()
   m <- nrow(y)

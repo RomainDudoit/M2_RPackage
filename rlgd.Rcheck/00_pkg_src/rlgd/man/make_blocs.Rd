@@ -11,7 +11,7 @@ make_blocs(x, y, ncores)
 
 \item{y}{matrix}
 
-\item{ncores}{integer#'}
+\item{ncores}{integer}
 }
 \value{
 blocs

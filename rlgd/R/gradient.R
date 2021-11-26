@@ -15,5 +15,6 @@
 #' gradient(x,y,theta)
 gradient <- function(x,y, theta) {
   m <- nrow(y)
+  print(y)
   return((1 / m) * x_dot_theta(t(x), probability(x, theta) - y)) # nolint
 }

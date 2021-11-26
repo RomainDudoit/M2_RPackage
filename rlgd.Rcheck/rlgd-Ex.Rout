@@ -2319,11 +2319,91 @@ mgadhesion  0.1393456
 > 
 > ### ** Examples
 > 
+> x <- as.matrix(breast_cancer[1:20,1:4])
+> y <- breast_cancer[1:20,"classe"]
+> y <- as.matrix(ifelse(y$classe =="malignant",1,0))
+> theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
+> mini_batch_gradient_descent(x,y,theta,learning_rate = 0.01, max_iter = 100,
++ batch_size = 16, tol = 1e-4)
+$theta
+                 [,1]
+clump      -0.6446457
+ucellsize   0.1903623
+ucellshape -0.8324498
+mgadhesion  1.3724611
+
+$cost_history
+  [1] 0.9052194 0.8247798 0.8769147 0.8569590 0.4658463 0.8798965 0.3915807
+  [8] 0.8238009 0.8794086 0.8788266 0.8534861 0.8474381 0.4825181 0.9224219
+ [15] 0.8806960 0.8783341 0.8531377 0.9313262 0.9303081 0.8649823 0.8670451
+ [22] 0.4827682 0.4523033 0.7832005 0.8546348 0.8942163 0.8655912 0.4444200
+ [29] 0.8978293 0.8211437 0.9450664 0.9139676 0.8703932 0.8662985 0.8869035
+ [36] 0.9116208 0.9049071 0.9590496 0.9008222 0.8372743 0.4205595 0.8946817
+ [43] 0.4216718 0.8329992 0.8556800 0.8425897 0.8888285 0.8761780 0.8738626
+ [50] 0.8347526 0.9265288 0.8672947 0.9039680 0.8765831 0.8629937 0.4062051
+ [57] 0.8794741 0.8593261 0.4274927 0.8634020 0.7889048 0.8691645 0.8722019
+ [64] 0.3531153 0.8833174 0.8325007 0.8473105 0.8736159 0.3728919 0.8313404
+ [71] 0.8921543 0.7631913 0.7928674 0.9145041 0.8677007 0.8238959 0.8454591
+ [78] 0.8120089 0.8230904 0.8958997 0.8593969 0.8078417 0.8329740 0.8855267
+ [85] 0.8311557 0.4136602 0.8370853 0.9206201 0.8105505 0.8790271 0.8450207
+ [92] 0.8361961 0.8340619 0.8313558 0.8724739 0.8675149 0.8289153 0.3727959
+ [99] 0.4032995 0.9072864
+
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("mini_batch_gradient_descent", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("probability")
+> ### * probability
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: probability
+> ### Title: Probability function
+> ### Aliases: probability
+> 
+> ### ** Examples
+> 
 > x <- as.matrix(breast_cancer[1:10,1:4])
 > y <- breast_cancer[1:10,"classe"]
 > y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 > theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-> mini_batch_gradient_descent(x,y,theta,learning_rate = 0.01, max_iter = 100,batch_size = 32, tol = 1e-4)
-Error in index[[j + 1]] : subscript out of bounds
-Calls: mini_batch_gradient_descent -> as.matrix
+> probability(x,theta)
+              [,1]
+ [1,] 0.0009239869
+ [2,] 0.0984554749
+ [3,] 0.5785543588
+ [4,] 0.4232094218
+ [5,] 0.1732853796
+ [6,] 0.5785543588
+ [7,] 0.5785543588
+ [8,] 0.1007450481
+ [9,] 0.2816956933
+[10,] 0.5785543588
+> 
+> 
+> 
+> base::assign(".dptime", (proc.time() - get(".ptime", pos = "CheckExEnv")), pos = "CheckExEnv")
+> base::cat("probability", base::get(".format_ptime", pos = 'CheckExEnv')(get(".dptime", pos = "CheckExEnv")), "\n", file=base::get(".ExTimings", pos = 'CheckExEnv'), append=TRUE, sep="\t")
+> cleanEx()
+> nameEx("rlgd.fit")
+> ### * rlgd.fit
+> 
+> flush(stderr()); flush(stdout())
+> 
+> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
+> ### Name: rlgd.fit
+> ### Title: Fit function
+> ### Aliases: rlgd.fit
+> 
+> ### ** Examples
+> 
+> rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
++ learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 3)
+Error in probability(x, theta) - y : 
+  non-numeric argument to binary operator
+Calls: rlgd.fit -> batch_gradient_descent -> gradient -> x_dot_theta
 Execution halted
