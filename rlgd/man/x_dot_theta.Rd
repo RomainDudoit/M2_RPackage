@@ -2,7 +2,7 @@
 % Please edit documentation in R/x_dot_theta.R
 \name{x_dot_theta}
 \alias{x_dot_theta}
-\title{x_dot_tetha function}
+\title{x_dot_theta function}
 \usage{
 x_dot_theta(x, theta)
 }
@@ -15,7 +15,7 @@ x_dot_theta(x, theta)
 a matrix
 }
 \description{
-x_dot_tetha function
+x_dot_theta function
 }
 \examples{
 x_dot_theta(x,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)))
