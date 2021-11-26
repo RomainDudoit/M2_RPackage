@@ -1,0 +1,14 @@
+batch_gradient_descent
+                        Gradient Descent Function - Batch
+breast_cancer           Data of breast cancer
+cost_function           Cost function
+get_x_y                 get_x_y_function
+gradient                Gradient function
+make_blocs              Creation of blocs for parallelisation
+mini_batch_gradient_descent
+                        Gradient Descent Function - Mini-Batch
+probability             Probability function
+sigmoid                 sigmoid function
+stochastic_gradient_descent
+                        Title
+x_dot_theta             x_dot_theta function
