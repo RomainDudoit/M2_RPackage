@@ -48,9 +48,8 @@ probability(x,theta)
 cost_function(x,y,theta)
 ```
 
-
 ```{r}
-
+#batch_gradient_descent(x, y, theta, 0.01 ,100, 1e-4, 3)
 ```
 
 
