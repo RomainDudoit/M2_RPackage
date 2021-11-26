@@ -14,6 +14,10 @@
 #' @export
 #'
 #' @examples
+#' x <- as.matrix(breast_cancer[1:20,1:4])
+#' y <- breast_cancer[1:20,"classe"]
+#'
+#' y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 #' rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
 #' learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 3)
 rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.5,

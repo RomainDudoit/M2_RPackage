@@ -44,7 +44,7 @@ probability(x,theta)
 ```
 
 ```{r}
-probability(x, theta) - y
+gradient(x,y,theta)
 ```
 
 
@@ -95,7 +95,7 @@ rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.5,
 
 
 ```{r}
-rlgd.fit(classe~., breast_cancer, "batch", batch_size=2, learning_rate = 0.1,
-                     max_iter = 100, tol = 1e-4,ncores=1)
+#rlgd.fit(classe~., breast_cancer, "batch", batch_size = 2, learning_rate = 0.1,
+                     #max_iter = 100, tol = 1e-4,ncores = 1)
 ```
 
