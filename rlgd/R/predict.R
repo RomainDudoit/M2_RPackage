@@ -21,7 +21,12 @@ rlgd.predict <- function(Reg.log, newdata, type) {
   # New data control
 
   if (identical(Reg.log$x_names, colnames(newdata))) {
-    x <- as.matrix(data.frame(rep(1, nrow(newdata)), newdata))
+
+    x <- model.matrix(~., data = newdata, xlev = Reg.log$xlevs)
+
+    if (is.null(Reg.log$preprocessParams) == FALSE){
+      x <- predict(Reg.log$preprocessParams,x)
+    }
 
     # Probability of belonging
     probs = probability(x, Reg.log$theta)

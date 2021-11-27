@@ -23,9 +23,10 @@ get_x_y <- function(formula, data, standardize) {
 
   # Transform factors to levels and drop one
   x <- model.matrix(formula, data)
+  preprocessParams <- NULL
 
   # this is a list of levels for each factor in the original df
-  xlevs <- lapply(data[,sapply(data, is.factor), drop = F], function(j){
+  xlevs <- lapply(data[,x_names][,sapply(data[,x_names], is.factor), drop = F], function(j){
     levels(j)
   })
 
@@ -40,8 +41,6 @@ get_x_y <- function(formula, data, standardize) {
   }else{
     if(standardize!= FALSE){
       stop("Invalid standardize parameter, should only be TRUE or FALSE")
-    }else{
-      preprocessParams <- NULL
     }
   }
 
@@ -49,6 +48,7 @@ get_x_y <- function(formula, data, standardize) {
 
   `%notin%` <- Negate(`%in%`)
 
+  # if target is not binary (0,1,1,1,0....)
   if (all(y %notin% 0:1)){
     y <- as.factor(y)
     if ((nlevels(y) > 2) ||(nlevels(y) == 1)){
@@ -59,9 +59,6 @@ get_x_y <- function(formula, data, standardize) {
       cat(tmp,"as been recoded respectively to 0, 1","\n")
       y <- as.matrix(as.numeric(levels(y))[y])
     }
-
-  }else{
-    print("test")
   }
 
   return(list(target = y, features = x, y_name = y_name, x_names = x_names, preprocess = preprocessParams, xlevs = xlevs))
