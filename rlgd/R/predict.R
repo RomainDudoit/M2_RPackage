@@ -20,10 +20,8 @@ rlgd.predict <- function(Reg.log, newdata, type) {
 
   # New data control
 
-  data[sapply(data, is.character)] <- lapply(data[sapply(data, is.character)],as.factor)
-
   if (identical(Reg.log$x_names, colnames(newdata))) {
-
+    newdata[sapply(newdata, is.character)] <- lapply(newdata[sapply(newdata, is.character)],as.factor)
     x <- model.matrix(~., data = newdata, xlev = Reg.log$xlevs)
 
     if (is.null(Reg.log$preprocessParams) == FALSE){
@@ -39,6 +37,6 @@ rlgd.predict <- function(Reg.log, newdata, type) {
       return(probs)
     }
   }else{
-    return("Erreur")
+    stop("newdata shape is different from data used in fit function")
   }
 }
