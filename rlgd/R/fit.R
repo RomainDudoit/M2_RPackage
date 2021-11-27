@@ -41,7 +41,7 @@ rlgd.fit <- function(formula, data, mode, batch_size=16, learning_rate = 0.1,
   }
 
   # Creation of the instance
-  inst <- list(formula = formula, x = x, y = y, y_name = y_name, x_names = x_names,
+  inst <- list(formula = formula, x = x, y = y, y_name = y_name, x_names = x_names, preprocess = x_y$preprocess, xlevs = x_y$xlevs,
                mode = mode, batch_size = batch_size, learning_rate = learning_rate, max_iter = max_iter,
                initial_theta = initial_theta, theta = gradient_descent[[1]], cost_history = gradient_descent[[2]],
                standardize = standardize)

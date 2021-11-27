@@ -40,6 +40,8 @@ get_x_y <- function(formula, data, standardize) {
   }else{
     if(standardize!= FALSE){
       stop("Invalid standardize parameter, should only be TRUE or FALSE")
+    }else{
+      preprocessParams <- NULL
     }
   }
 
@@ -62,5 +64,5 @@ get_x_y <- function(formula, data, standardize) {
     print("test")
   }
 
-  return(list(target = y, features = x, y_name = y_name, x_names = x_names,preprocess = preprocessParams, xlevs = xlevs))
+  return(list(target = y, features = x, y_name = y_name, x_names = x_names, preprocess = preprocessParams, xlevs = xlevs))
 }
