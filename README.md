@@ -45,6 +45,8 @@ The dataset is therefore in the *breast_cancer* object, so we can start fitting 
     
     plot(seq(1, length(res1$cost_history)), res1$cost_history, type = "l")
     
+![](Tutorial_files_figure/batch.png)
+    
     y_pred <- predict(res1, test_set[, res1$x_names], type = "class")
     accuracy <- mean(y_pred == test_set[, res1$y_name])
     print(accuracy)
