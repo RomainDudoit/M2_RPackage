@@ -20,6 +20,8 @@ rlgd.predict <- function(Reg.log, newdata, type) {
 
   # New data control
 
+  data[sapply(data, is.character)] <- lapply(data[sapply(data, is.character)],as.factor)
+
   if (identical(Reg.log$x_names, colnames(newdata))) {
 
     x <- model.matrix(~., data = newdata, xlev = Reg.log$xlevs)
