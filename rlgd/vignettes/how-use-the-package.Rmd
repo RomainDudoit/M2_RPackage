@@ -35,17 +35,3 @@ train_set <- breast_cancer[train_index, ]
 test_set <- breast_cancer[-train_index, ]
 ```
 
-
-```{r}
-get_x_y(classe~.,breast_cancer,standardize = TRUE)
-```
-
-
-```{r}
-res <- rlgd.fit(formula = classe~., data = breast_cancer, mode = "batch", learning_rate = 0.01, max_iter = 1000, tol = 1e-4, standardize = TRUE)
-```
-
-```{r}
-res
-```
-

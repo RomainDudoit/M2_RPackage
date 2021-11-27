@@ -14,12 +14,20 @@
 #' get_x_y(classe ~.,breast_cancer, standardize=TRUE)
 get_x_y <- function(formula, data, standardize) {
 
+  # Convert character variables to factor
+  data[sapply(data, is.character)] <- lapply(data[sapply(data, is.character)],as.factor)
+
   vars <- get.vars(formula, data)
   y_name = vars[1]
   x_names <- vars[-1]
 
   # Transform factors to levels and drop one
   x <- model.matrix(formula, data)
+
+  # this is a list of levels for each factor in the original df
+  xlevs <- lapply(data[,sapply(data, is.factor), drop = F], function(j){
+    levels(j)
+  })
 
   # Standardization is only perform on numeric data and no binary
 
@@ -54,5 +62,5 @@ get_x_y <- function(formula, data, standardize) {
     print("test")
   }
 
-  return(list(target = y, features = x, y_name = y_name, x_names = x_names))
+  return(list(target = y, features = x, y_name = y_name, x_names = x_names,preprocess = preprocessParams, xlevs = xlevs))
 }
