@@ -7,34 +7,35 @@
 #' @return list(y,x,y_name,x_name), y & x = matrix, y_name & x_names = c()
 #' @importFrom caret dummyVars preProcess
 #' @importFrom formula.tools get.vars
-#' @importFrom stats predict
+#' @importFrom stats predict model.matrix na.omit
 #' @export
 #'
 #' @examples
 #' get_x_y(classe ~., data=breast_cancer, standardize=TRUE)
-get_x_y <- function(formula, data, standardize) {
+get_x_y <- function(formula, data, standardize=FALSE) {
 
   vars <- get.vars(formula, data)
   y_name = vars[1]
   x_names <- vars[-1]
 
+  # Transform factors to levels and drop one
+  x <- model.matrix(formula, data)
 
-  y <- as.matrix(data[, y_name])
-
-  dmy <- dummyVars(formula, data, drop2nd = TRUE)
-  x <- predict(dmy, data)
-  binVars <- which(sapply(X, function(x){all(x %in% 0:1)}))
+  # Standardization is only perform on numeric data and no binary
 
   if (standardize == TRUE){
-    preprocessParams <- preProcess(x, method=c("center","scale"))
+    is_binary <-apply(x,2,function(x){all(na.omit(x) %in% 0:1)})
+    no_binary <- x[,names(is_binary[is_binary==FALSE])]
+    preprocessParams <- preProcess(no_binary, method=c("center","scale"))
     x <- predict(preprocessParams, x)
+
   }else{
-    if(standardize!=FALSE){
+    if(standardize!= FALSE){
       stop("Invalid standardize parameter, should only be TRUE or FALSE")
     }
   }
 
-  x <- cbind("(Intercept)" = 1, x)
+  y <- as.matrix(data[, y_name])
 
   `%notin%` <- Negate(`%in%`)
 

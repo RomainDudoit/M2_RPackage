@@ -4,7 +4,7 @@
 \alias{get_x_y}
 \title{get_x_y_function}
 \usage{
-get_x_y(formula, data, standardize)
+get_x_y(formula, data, standardize = FALSE)
 }
 \arguments{
 \item{formula}{a formula}

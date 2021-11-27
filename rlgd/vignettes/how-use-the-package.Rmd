@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(rlgd)
 library(parallel)
+library(caret)
+library(formula.tools)
 ```
 
 
@@ -58,4 +60,6 @@ cost_function(x,y,theta)
 ```
 
 
-
+```{r}
+get_x_y(classe~.,breast_cancer)
+```
