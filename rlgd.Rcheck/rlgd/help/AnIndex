@@ -1,0 +1,15 @@
+batch_gradient_descent	batch_gradient_descent
+breast_cancer	breast_cancer
+cost_function	cost_function
+get_x_y	get_x_y
+gradient	gradient
+gradient_parallele	gradient_parallele
+make_blocs	make_blocs
+mini_batch_gradient_descent	mini_batch_gradient_descent
+parallelisation	parallelisation
+probability	probability
+rlgd.fit	rlgd.fit
+rlgd.predict	rlgd.predict
+sigmoid	sigmoid
+stochastic_gradient_descent	stochastic_gradient_descent
+x_dot_theta	x_dot_theta

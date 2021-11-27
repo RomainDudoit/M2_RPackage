@@ -1,4 +1,4 @@
-#' Gradient function
+#' Cost function
 #'
 #' @param x a matrix
 #' @param y a matrix
@@ -12,8 +12,10 @@
 #' y <- breast_cancer[1:10,"classe"]
 #' y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 #' theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-#' gradient(x,y,theta)
-gradient <- function(x,y, theta) {
+#' cost_function(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)))
+cost_function <- function(x, y, theta) {
   m <- nrow(y)
-  return((1 / m) * x_dot_theta(t(x), probability(x, theta) - y))
+  g <- probability(x, theta)
+  j <- (1 / m) * sum((-y * log(g)) - ((1 - y) * log(1 - g)))
+  return(j)
 }

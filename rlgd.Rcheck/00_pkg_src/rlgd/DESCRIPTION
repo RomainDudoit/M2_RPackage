@@ -1,0 +1,24 @@
+Package: rlgd
+Title: Perform Logistic Regression with Gradient Descent and
+        Parallelization
+Version: 0.0.0.9000
+Authors@R: c(
+    person(given = "Romain", family = "Dudoit", email = "romain.dudoit@univ-lyon2.fr", role = c("aut","cre")),
+    person(given = "Pierre", family = "Le Galeze", email = "first.last@example.com", role = "aut"),  
+    person(given = "Chloe", family = "Danet", role = "aut"))
+Description: Perform Logistic Regression with Gradient Descent and Parallelization.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: caret, formula.tools, stats
+Suggests: rmarkdown, knitr
+VignetteBuilder: knitr
+Depends: R (>= 2.10)
+LazyData: true
+NeedsCompilation: no
+Packaged: 2021-11-27 14:11:58 UTC; Romain
+Author: Romain Dudoit [aut, cre],
+  Pierre Le Galeze [aut],
+  Chloe Danet [aut]
+Maintainer: Romain Dudoit <romain.dudoit@univ-lyon2.fr>

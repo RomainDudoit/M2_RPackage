@@ -14,6 +14,7 @@
 #' theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 #' gradient(x,y,theta)
 gradient <- function(x,y, theta) {
+  print("hello")
   m <- nrow(y)
   return((1 / m) * x_dot_theta(t(x), probability(x, theta) - y))
 }
