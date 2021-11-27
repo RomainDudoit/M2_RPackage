@@ -43,5 +43,5 @@ Fit function
 }
 \examples{
 rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
-learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 2)
+learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 2, standardize = TRUE)
 }

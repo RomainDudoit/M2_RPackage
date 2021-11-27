@@ -11,8 +11,8 @@
 #' @export
 #'
 #' @examples
-#' get_x_y(classe ~., data=breast_cancer, standardize=TRUE)
-get_x_y <- function(formula, data, standardize=FALSE) {
+#' get_x_y(classe ~.,breast_cancer, standardize=TRUE)
+get_x_y <- function(formula, data, standardize) {
 
   vars <- get.vars(formula, data)
   y_name = vars[1]
@@ -47,6 +47,7 @@ get_x_y <- function(formula, data, standardize=FALSE) {
       tmp <- levels(y)
       levels(y) <- c(0, 1)
       cat(tmp,"as been recoded respectively to 0, 1","\n")
+      print("hello")
       y <- as.matrix(as.numeric(levels(y))[y])
     }
 

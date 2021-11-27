@@ -47,7 +47,7 @@ probability(x,theta)
 ```
 
 ```{r}
-gradient(x,y,theta)
+a <- gradient(x,y,theta)
 ```
 
 
@@ -56,10 +56,5 @@ cost_function(x,y,theta)
 ```
 
 ```{r}
-#batch_gradient_descent(x, y, theta, learning_rate=0.01, max_iter=100, tol=1e-4, ncores=4)
-```
-
-
-```{r}
-get_x_y(classe~.,breast_cancer)
+rlgd.fit(formula=classe~., breast_cancer, mode='batch', batch_size=2, learning_rate = 0.1, max_iter = 100, tol = 1e-4 ,ncores=1, standardize = FALSE)
 ```

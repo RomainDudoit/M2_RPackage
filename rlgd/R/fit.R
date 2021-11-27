@@ -16,7 +16,7 @@
 #'
 #' @examples
 #' rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
-#' learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 2)
+#' learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 2, standardize = TRUE)
 rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.1,
                      max_iter = 100, tol = 1e-4,ncores=1, standardize = FALSE) {
 
@@ -44,8 +44,7 @@ rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.1,
   inst <- list(formula = formula, x = x, y = y, y_name = y_name, x_names = x_names,
                mode = mode, batch_size = batch_size, learning_rate = learning_rate, max_iter = max_iter,
                initial_theta = initial_theta, theta = gradient_descent[[1]], cost_history = gradient_descent[[2]],
-               standardize = standardize
-  )
+               standardize = standardize)
 
   attr(inst, "class") <- "Reg.Log"
   return(inst)
