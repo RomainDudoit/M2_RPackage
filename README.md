@@ -30,6 +30,10 @@ The dataset is therefore in the *breast_cancer* object, so we can start fitting 
 **Note: If you are unsure about a function, use **help(name_function)** or **?name_function** , example: **?fit**.
 
 ------------------------------------------------------------------------
+
+Data preparation
+----------------
+
 ### Conversion of the target variable to 0/1 if it is not the case
 
 
