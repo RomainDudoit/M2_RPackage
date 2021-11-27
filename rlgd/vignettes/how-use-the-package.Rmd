@@ -1,0 +1,60 @@
+---
+title: "how-use-the-package"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{how-use-the-package}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rlgd)
+library(parallel)
+library(caret)
+library(formula.tools)
+```
+
+
+```{r}
+data("breast_cancer")
+```
+
+```{r}
+x <- as.matrix(breast_cancer[1:10,1:4])
+y <- breast_cancer[1:10,"classe"]
+y <- as.matrix(ifelse(y$classe=="malignant",1,0))
+theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)) 
+```
+
+
+```{r}
+sigmoid(2)
+```
+
+```{r}
+x_dot_theta(x, theta)
+```
+
+```{r}
+probability(x,theta)
+```
+
+```{r}
+a <- gradient(x,y,theta)
+```
+
+
+```{r}
+cost_function(x,y,theta)
+```
+
+```{r}
+rlgd.fit(formula=classe~., breast_cancer, mode='batch', batch_size=2, learning_rate = 0.1, max_iter = 100, tol = 1e-4 ,ncores=1, standardize = TRUE)
+```
