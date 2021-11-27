@@ -8,7 +8,7 @@ rlgd.fit(
   formula,
   data,
   mode,
-  batch_size,
+  batch_size = 16,
   learning_rate = 0.1,
   max_iter = 100,
   tol = 1e-04,

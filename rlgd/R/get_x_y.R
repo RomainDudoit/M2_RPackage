@@ -41,8 +41,8 @@ get_x_y <- function(formula, data, standardize) {
 
   if (all(y %notin% 0:1)){
     y <- as.factor(y)
-    if (nlevels(x) > 2){
-      stop("fit function can only perform on binary target")
+    if ((nlevels(y) > 2) ||(nlevels(y) == 1)){
+      stop("fit function can only perform on two classes")
     }else{
       tmp <- levels(y)
       levels(y) <- c(0, 1)
@@ -50,8 +50,9 @@ get_x_y <- function(formula, data, standardize) {
       y <- as.matrix(as.numeric(levels(y))[y])
     }
 
+  }else{
+    print("test")
   }
-
 
   return(list(target = y, features = x, y_name = y_name, x_names = x_names))
 }

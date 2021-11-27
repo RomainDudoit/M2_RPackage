@@ -17,7 +17,7 @@
 #' @examples
 #' rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
 #' learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 2, standardize = TRUE)
-rlgd.fit <- function(formula, data, mode, batch_size, learning_rate = 0.1,
+rlgd.fit <- function(formula, data, mode, batch_size=16, learning_rate = 0.1,
                      max_iter = 100, tol = 1e-4,ncores=1, standardize = FALSE) {
 
   x_y <- get_x_y(formula, data, standardize)
