@@ -1,10 +1,10 @@
-#' Gradient function
+#' Gradient of the cost function of logistic regression
 #'
-#' @param x a matrix
-#' @param y a matrix
-#' @param theta a matrix
+#' @param x matrix of features of dimension m x n
+#' @param y matrix of target of dimension m x 1
+#' @param theta matrix of parameters of dimension n x 1
 #'
-#' @return a matrix
+#' @return matrix of dimension n x 1 of partial derivatives of each parameter
 #' @export
 #'
 #' @examples

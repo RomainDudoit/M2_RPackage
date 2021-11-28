@@ -1,10 +1,10 @@
 #' Matrix multiplication function
 #'
 #' Function used to perform matrix multiplication of X.theta
-#' @param x matrix of dim (m,n+1) where n is the number of features
-#' @param theta matrix of dim (n+1,1) of parameters
+#' @param x matrix of features of dimension m x n
+#' @param theta matrix of parameters of dimension n x 1
 #'
-#' @return matrix of dim (n+1,1) i.e the model of logistic regression
+#' @return matrix of dimension n x 1 i.e the model of logistic regression
 #' @export
 #'
 #'

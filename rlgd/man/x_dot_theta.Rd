@@ -7,12 +7,12 @@
 x_dot_theta(x, theta)
 }
 \arguments{
-\item{x}{matrix of dim (m,n+1) where n is the number of features}
+\item{x}{matrix of features of dimension m x n}
 
-\item{theta}{matrix of dim (n+1,1) of parameters}
+\item{theta}{matrix of parameters of dimension n x 1}
 }
 \value{
-matrix of dim (n+1,1) i.e the model of logistic regression
+matrix of dimension n x 1 i.e the model of logistic regression
 }
 \description{
 Function used to perform matrix multiplication of X.theta

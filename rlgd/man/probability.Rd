@@ -2,17 +2,17 @@
 % Please edit documentation in R/probability.R
 \name{probability}
 \alias{probability}
-\title{Probability function}
+\title{Probability function of logistic regression}
 \usage{
 probability(x, theta)
 }
 \arguments{
-\item{x}{matrix of dim (m,n+1) where n is the number of features}
+\item{x}{matrix of dimension m x n}
 
-\item{theta}{matrix of dim (n+1,1) of parameters}
+\item{theta}{matrix of dimension n x 1 of parameters}
 }
 \value{
-1 / (1 + exp(-x\%*\%theta))
+matrix of dimension m x 1 equal to (1 / (1 + exp(-x\%*\%theta)))
 }
 \description{
 Function used to compute the probability that observations are in a specified category of a binary variable.

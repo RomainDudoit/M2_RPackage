@@ -18,6 +18,3 @@ This function is used to perform logistic regression.
 \examples{
 sigmoid(2)
 }
-\seealso{
-\code{\link{probability}}
-}

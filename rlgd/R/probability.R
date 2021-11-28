@@ -1,10 +1,10 @@
-#' Probability function for logistic regression
+#' Probability function of logistic regression
 #'
 #' Function used to compute the probability that observations are in a specified category of a binary variable.
-#' @param x matrix of dim (m,n+1) where n is the number of features
-#' @param theta matrix of dim (n+1,1) of parameters
+#' @param x matrix of dimension m x n
+#' @param theta matrix of dimension n x 1 of parameters
 #'
-#' @return 1 / (1 + exp(-x%*%theta))
+#' @return matrix of dimension m x 1 equal to (1 / (1 + exp(-x%*%theta)))
 #' @export
 #'
 #' @seealso \code{\link{sigmoid}} \code{\link{x_dot_theta}}

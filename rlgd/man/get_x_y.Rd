@@ -2,23 +2,46 @@
 % Please edit documentation in R/get_x_y.R
 \name{get_x_y}
 \alias{get_x_y}
-\title{get_x_y_function}
+\title{get_x_y function}
 \usage{
 get_x_y(formula, data, standardize)
 }
 \arguments{
-\item{formula}{R Formula e.g y ~ x + b}
+\item{formula}{formula e.g y ~ x + b}
 
 \item{data}{dataframe including features and target variable}
 
-\item{standardize}{TRUE or FALSE}
+\item{standardize}{logical, FALSE by default, set to TRUE to apply standardization.}
 }
 \value{
-list(y,x,y_name,x_name), y & x = matrix, y_name & x_names = c()
+several variables in a list
+\itemize{
+\item target: matrix of target variable from R formula
+\item features : matrix of features from R formula
+\item y_name : the name of the target variable
+\item x_names : the names of the features
+\item preprocess : NUll or
+}
+y & x = matrix, y_name & x_names = c()
 }
 \description{
-get_x_y_function
+This function is part of the rlgd.fit() function of this package and is used to perform several preprocessing steps.
+}
+\details{
+It identify the \eqn{X} features and \eqn{y} target variable from the formula input.
+After transforming the potential character variables into factor, a model matrix is created from the R formula.
+The model matrix is the matrix that contains in the first column the intercept and the features of
+the formula in the others columns. One hot encoding is automatically performed on factors during the creation of the model matrix.
+The function can also perform standardization on continuous or no binary (0,1) numeric variables with the preprocess function of the caret package.
+This function also check if the target variable is only binary since the package cannot do multinomial logistic regression.
 }
 \examples{
 get_x_y(classe ~.,breast_cancer, standardize=TRUE)
+}
+\seealso{
+\itemize{
+\item \code{\link{rlgd.fit}}
+\item \code{\link[stats]{model.matrix}}
+\item \code{\link[caret]{preProcess}}
+}
 }

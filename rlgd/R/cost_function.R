@@ -1,11 +1,14 @@
-#' Cost function
+#' Cost function of logistic regression
 #'
-#' @param x a matrix
-#' @param y a matrix
-#' @param theta a matrix
+#' @param x matrix of features of dimension m x n
+#' @param y matrix of target variable of dimension m x 1
+#' @param theta matrix of parameters of dimension n x 1
 #'
-#' @return a matrix
+#'
+#' @return numeric equal to (1 / m) * sum((-y * log(g)) - ((1 - y) * log(1 - g))) where m is the number of observations and g the probabilty fonction of logistic regression
 #' @export
+#'
+#' @seealso \code{\link{probability}}
 #'
 #' @examples
 #' x <- as.matrix(breast_cancer[1:10,1:4])

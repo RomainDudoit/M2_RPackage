@@ -2,22 +2,22 @@
 % Please edit documentation in R/cost_function.R
 \name{cost_function}
 \alias{cost_function}
-\title{Cost function}
+\title{Cost function of logistic regression}
 \usage{
 cost_function(x, y, theta)
 }
 \arguments{
-\item{x}{a matrix}
+\item{x}{matrix of features of dimension m x n}
 
-\item{y}{a matrix}
+\item{y}{matrix of target variable of dimension m x 1}
 
-\item{theta}{a matrix}
+\item{theta}{matrix of parameters of dimension n x 1}
 }
 \value{
-a matrix
+numeric equal to (1 / m) * sum((-y * log(g)) - ((1 - y) * log(1 - g))) where m is the number of observations and g the probabilty fonction of logistic regression
 }
 \description{
-Cost function
+Cost function of logistic regression
 }
 \examples{
 x <- as.matrix(breast_cancer[1:10,1:4])
@@ -25,4 +25,7 @@ y <- breast_cancer[1:10,"classe"]
 y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 cost_function(x,y,as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1)))
+}
+\seealso{
+\code{\link{probability}}
 }

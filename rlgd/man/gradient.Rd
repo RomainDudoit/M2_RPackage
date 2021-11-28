@@ -2,22 +2,22 @@
 % Please edit documentation in R/gradient.R
 \name{gradient}
 \alias{gradient}
-\title{Gradient function}
+\title{Gradient of the cost function of logistic regression}
 \usage{
 gradient(x, y, theta)
 }
 \arguments{
-\item{x}{a matrix}
+\item{x}{matrix of features of dimension m x n}
 
-\item{y}{a matrix}
+\item{y}{matrix of target of dimension m x 1}
 
-\item{theta}{a matrix}
+\item{theta}{matrix of parameters of dimension n x 1}
 }
 \value{
-a matrix
+matrix of dimension n x 1 of partial derivatives of each parameter
 }
 \description{
-Gradient function
+Gradient of the cost function of logistic regression
 }
 \examples{
 x <- as.matrix(breast_cancer[1:10,1:4])
