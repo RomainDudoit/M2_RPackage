@@ -2,7 +2,7 @@
 % Please edit documentation in R/sigmoid.R
 \name{sigmoid}
 \alias{sigmoid}
-\title{sigmoid function}
+\title{Sigmoid function}
 \usage{
 sigmoid(x)
 }
@@ -13,7 +13,7 @@ sigmoid(x)
 1 / (1 + exp(-x))
 }
 \description{
-sigmoid function
+This function is used to perform logistic regression
 }
 \examples{
 sigmoid(2)

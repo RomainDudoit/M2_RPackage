@@ -1,4 +1,6 @@
-#' sigmoid function
+#' Sigmoid function
+#'
+#' This function is used to perform logistic regression.
 #'
 #' @param x a number
 #'
