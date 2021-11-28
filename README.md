@@ -47,6 +47,8 @@ For the example tests to follow, we divide our dataset into two samples: trainin
     train_set <- breast_cancer[train_index, ]
     test_set <- breast_cancer[-train_index, ]
     
+    ##  print shape par exemple
+    
 
 ### Overview of data with get_x_y function
 
@@ -58,7 +60,7 @@ In this first example we illustrate the *batch* mode of gradient descent. The fi
 
     res1 <- fit(classe ~ ., train_set, mode = "batch", batch_size = 32, learning_rate = 0.01, max_iter = 1000, tol = 1e-4)
     
-    #print 
+    ##  print 
     
 The object *res1* contains the coefficient matrix of the model and the cost matrix which can be illustrated as follows:
     
@@ -75,7 +77,7 @@ Then, it is possible to measure the quality of predictions by calculating the ac
     accuracy <- mean(y_pred == test_set[, res1$y_name])
     print(accuracy)
     
-    #print
+    ##  [1] 0.9665072
    
 
 ### Example 2 with "online" mode : 
@@ -83,6 +85,9 @@ Then, it is possible to measure the quality of predictions by calculating the ac
 Here is another example, this time using the *online* mode of stochastic gradient descent.
 
     res2 <- rlgd.fit(classe ~ ., train_set, mode = "online", batch_size = 32, learning_rate = 0.01, max_iter = 100, tol = 1e-4) # nolint
+    
+    ##  print
+    
     plot(seq(1, length(res2$cost_history)), res2$cost_history, type = "l")
     
 ![](Tutorial_files_figure/online.png)
@@ -90,13 +95,18 @@ Here is another example, this time using the *online* mode of stochastic gradien
     y_pred <- rlgd.predict(res2, test_set[, res2$x_names], type = "class")
     accuracy <- mean(y_pred == test_set[, res2$y_name])
     print(accuracy)
+    
+    ##  [1] 0.9665072
 
 
-### Example 2 with "mini-batch" mode : 
+### Example 3 with "mini-batch" mode : 
 
 This last example finally illustrates the *mini-batch* mode of gradient descent applied to logistic regression.
 
     res3 <- rlgd.fit(classe ~ ., train_set, mode = "mini-batch", batch_size = 32, learning_rate = 0.01, max_iter = 2000, tol = 1e-4) # nolint
+    
+    ##  print
+    
     plot(seq(1, length(res3$cost_history)), res3$cost_history, type = "l")
     
 ![](Tutorial_files_figure/minibatch.png)
@@ -104,6 +114,8 @@ This last example finally illustrates the *mini-batch* mode of gradient descent 
     y_pred <- rlgd.predict(res3, test_set[, res3$x_names], type = "class")
     accuracy <- mean(y_pred == test_set[, res3$y_name])
     print(accuracy)
+    
+    ##  [1] 0.9617225
 
 ------------------------------------------------------------------------
 
