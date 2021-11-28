@@ -20,7 +20,10 @@ several variables in a list
 \item features : matrix of features from R formula
 \item y_name : the name of the target variable
 \item x_names : the names of the features
-\item preprocess : NUll or
+\item preprocess : NUll or contains output of preProcess function of the caret package. It will be used in rlgd.predict() function to apply or not
+standardistion on newdata.
+\item xlevs : list of levels for each factor in the dataframe. It will be used in rlgd.predict() function to process the same one hot encoding
+on new data.
 }
 y & x = matrix, y_name & x_names = c()
 }

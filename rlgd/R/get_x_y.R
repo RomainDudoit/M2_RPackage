@@ -3,7 +3,7 @@
 #' This function is part of the rlgd.fit() function of this package and is used to perform several preprocessing steps.
 #'
 #' @details It identify the \eqn{X} features and \eqn{y} target variable from the formula input.
-#' After transforming the potential character variables into factor, a model matrix is created from the R formula.
+#' After transforming the potential character variables into factor, a model matrix is created from the formula.
 #' The model matrix is the matrix that contains in the first column the intercept and the features of
 #' the formula in the others columns. One hot encoding is automatically performed on factors during the creation of the model matrix.
 #' The function can also perform standardization on continuous or no binary (0,1) numeric variables with the preprocess function of the caret package.
@@ -19,7 +19,10 @@
 #'   \item features : matrix of features from R formula
 #'   \item y_name : the name of the target variable
 #'   \item x_names : the names of the features
-#'   \item preprocess : NUll or
+#'   \item preprocess : NUll or contains output of preProcess function of the caret package. It will be used in rlgd.predict() function to apply or not
+#'   standardistion on newdata.
+#'   \item xlevs : list of levels for each factor in the dataframe. It will be used in rlgd.predict() function to process the same one hot encoding
+#'   on new data.
 #' }
 #' y & x = matrix, y_name & x_names = c()
 #' @importFrom caret dummyVars preProcess
