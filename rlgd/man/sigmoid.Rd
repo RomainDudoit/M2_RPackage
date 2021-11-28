@@ -7,14 +7,17 @@
 sigmoid(x)
 }
 \arguments{
-\item{x}{a number}
+\item{x}{a numeric or a matrix.}
 }
 \value{
-1 / (1 + exp(-x))
+1 / (1 + exp(-x)), value or values between 0, 1
 }
 \description{
-This function is used to perform logistic regression
+This function is used to perform logistic regression.
 }
 \examples{
 sigmoid(2)
+}
+\seealso{
+\code{\link{probability}}
 }

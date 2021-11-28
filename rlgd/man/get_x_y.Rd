@@ -7,9 +7,9 @@
 get_x_y(formula, data, standardize)
 }
 \arguments{
-\item{formula}{a formula}
+\item{formula}{R Formula e.g y ~ x + b}
 
-\item{data}{a matrix}
+\item{data}{dataframe including features and target variable}
 
 \item{standardize}{TRUE or FALSE}
 }

@@ -2,25 +2,23 @@
 % Please edit documentation in R/x_dot_theta.R
 \name{x_dot_theta}
 \alias{x_dot_theta}
-\title{x_dot_theta function}
+\title{Matrix multiplication function}
 \usage{
 x_dot_theta(x, theta)
 }
 \arguments{
-\item{x}{a matrix}
+\item{x}{matrix of dim (m,n+1) where n is the number of features}
 
-\item{theta}{a matrix}
+\item{theta}{matrix of dim (n+1,1) of parameters}
 }
 \value{
-a matrix
+matrix of dim (n+1,1) i.e the model of logistic regression
 }
 \description{
-x_dot_theta function
+Function used to perform matrix multiplication of X.theta
 }
 \examples{
 x <- as.matrix(breast_cancer[1:10,1:4])
-y <- breast_cancer[1:10,"classe"]
-y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 x_dot_theta(x,theta)
 }

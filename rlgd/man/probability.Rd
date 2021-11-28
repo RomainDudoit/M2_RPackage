@@ -7,20 +7,21 @@
 probability(x, theta)
 }
 \arguments{
-\item{x}{a matrix}
+\item{x}{matrix of dim (m,n+1) where n is the number of features}
 
-\item{theta}{a matrix}
+\item{theta}{matrix of dim (n+1,1) of parameters}
 }
 \value{
-a matrix
+1 / (1 + exp(-x\%*\%theta))
 }
 \description{
-Probability function
+Function used to compute the probability that observations are in a specified category of a binary variable.
 }
 \examples{
 x <- as.matrix(breast_cancer[1:10,1:4])
-y <- breast_cancer[1:10,"classe"]
-y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 probability(x,theta)
+}
+\seealso{
+\code{\link{sigmoid}} \code{\link{x_dot_theta}}
 }

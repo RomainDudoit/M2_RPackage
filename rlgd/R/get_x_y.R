@@ -1,8 +1,8 @@
 #' get_x_y_function
 #'
-#' @param formula a formula
-#' @param data a matrix
-#' @param standardize TRUE or FALSE
+#' @param formula R Formula e.g y ~ x + b
+#' @param data dataframe including features and target variable
+#' @param standardize logical
 #'
 #' @return list(y,x,y_name,x_name), y & x = matrix, y_name & x_names = c()
 #' @importFrom caret dummyVars preProcess
