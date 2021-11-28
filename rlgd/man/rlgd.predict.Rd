@@ -26,6 +26,7 @@ train_index <- createDataPartition(breast_cancer$classe, p = 0.7, list = FALSE)
 train_set <- breast_cancer[train_index, ]
 test_set <- breast_cancer[-train_index, ]
 res <- rlgd.fit(classe ~ ., train_set, mode = "batch", batch_size = 32, learning_rate = 0.01,
-max_iter = 100, tol = 1e-4)
+max_iter = 100, tol = 1e-4, standardize = FALSE)
 rlgd.predict(res, test_set[, res$x_names], type = "class")
+
 }

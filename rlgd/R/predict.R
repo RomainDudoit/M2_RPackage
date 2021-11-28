@@ -14,18 +14,20 @@
 #' train_set <- breast_cancer[train_index, ]
 #' test_set <- breast_cancer[-train_index, ]
 #' res <- rlgd.fit(classe ~ ., train_set, mode = "batch", batch_size = 32, learning_rate = 0.01,
-#' max_iter = 100, tol = 1e-4)
+#' max_iter = 100, tol = 1e-4, standardize = FALSE)
 #' rlgd.predict(res, test_set[, res$x_names], type = "class")
+#'
 rlgd.predict <- function(Reg.log, newdata, type) {
 
   # New data control
 
   if (identical(Reg.log$x_names, colnames(newdata))) {
     newdata[sapply(newdata, is.character)] <- lapply(newdata[sapply(newdata, is.character)],as.factor)
-    x <- model.matrix(~., data = newdata, xlev = Reg.log$xlevs)
 
-    if (is.null(Reg.log$preprocessParams) == FALSE){
-      x <- predict(Reg.log$preprocessParams,x)
+    x <- model.matrix(~., data = newdata, Reg.log$xlevs)
+
+    if (length(Reg.log$preprocess) != 0){
+      x <- predict(Reg.log$preprocess,x)
     }
 
     # Probability of belonging
