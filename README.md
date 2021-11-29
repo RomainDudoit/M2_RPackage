@@ -104,7 +104,7 @@ Here is another example, this time using the *online* mode of stochastic gradien
     
     y_pred <- rlgd.predict(res2, test_set[, res2$x_names], type = "class")
     
-    prop.table(table(y_pred,test_set$class))
+    prop.table(table(y_pred,test_set$classe))
     
     ##       0         1
     ## 0 61.722488  1.913876
@@ -128,7 +128,7 @@ This last example finally illustrates the *mini-batch* mode of gradient descent 
     
     y_pred <- rlgd.predict(res3, test_set[, res3$x_names], type = "class")
     
-    prop.table(table(y_pred,test_set$class))
+    prop.table(table(y_pred,test_set$classe))
     
     ##      0         1
     ##0 65.550239  1.913876
