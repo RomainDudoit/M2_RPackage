@@ -7,7 +7,7 @@
 get_x_y(formula, data, standardize)
 }
 \arguments{
-\item{formula}{formula e.g y ~ x + b}
+\item{formula}{object of class formula}
 
 \item{data}{dataframe including features and target variable}
 

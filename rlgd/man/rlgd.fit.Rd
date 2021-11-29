@@ -8,7 +8,7 @@ rlgd.fit(
   formula,
   data,
   mode,
-  batch_size = 16,
+  batch_size = 8,
   learning_rate = 0.1,
   max_iter = 100,
   tol = 1e-04,
@@ -17,41 +17,60 @@ rlgd.fit(
 )
 }
 \arguments{
-\item{formula}{object of class formula e.g y ~ a + b}
+\item{formula}{object of class formula}
 
 \item{data}{a data frame}
 
 \item{mode}{the gradient descent method used to fit the model : "batch", "online" or "mini-batch"}
 
-\item{batch_size}{a integer used to fix the batch size of mini-batch gradient descent.}
+\item{batch_size}{an integer used to fix the batch size of mini-batch gradient descent.Set to 8 by default.}
 
-\item{learning_rate}{a float. Learning rate of the gradient descent.}
+\item{learning_rate}{a float. Learning rate of the gradient descent. Set to 0.1 by default.}
 
 \item{max_iter}{an integer. Number of maximum number of iteration/epoch of the gradient descent}
 
 \item{tol}{a numeric. Set to 1e-4 by default. Threshold to stop iteration.}
 
-\item{ncores}{only used for batch mode. an integer corresponding to the number of cores used during parallelisation process}
+\item{ncores}{only used for batch mode. an integer corresponding to the number of cores used during parallelisation process. Set to 1 by default.}
 
 \item{standardize}{logical. FALSE by default, set to TRUE to apply standardization.}
 }
 \value{
-an instance of the class Reg.log
+an instance of the class Reg.log with the following attributes :
+\itemize{
+\item input parameters of lrgd.fit function. See Arguments section above.
+\item x, matrix (from get_x_y function)
+\item y, matrix of the target variable (from get_x_y function)
+\item y_name : the name of the target variable (from get_x_y function)
+\item x_names : list of the names of the features (from get_x_y function)
+\item preprocess : NULL or output of preProcess function from the caret package called in get_x_y function. It will be used in rlgd.predict() function to apply or not
+standardization on new data.
+\item xlevs : list of levels for each factor in the data frame from get_x_y function. It will be used in rlgd.predict() function to process the same one hot encoding
+on new data.
+\item theta : a matrix. Final parameters of the binary logistic regression from a gradient descent function
+\item cost_history : list of results of cost function for each iteration of a gradient descent function
+
+}
 }
 \description{
 This function perform binary logistic regression using gradient descent optimization (batch, online or mini-batch). It can use
-parallel computing for batch mode.
+parallel computing only for batch mode.
 }
 \details{
-Test ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-
-TES32 ddddddddddddddddddddddddddddddddddddddddddddddddddddd
-dddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
-ddddddddddddddddddddddddddddddddddddddddddddddddddddd
+Control of the data and preprocessing is done with get_x_y_function. After random initialization of the parameters in theta,
+and according to the chosen mode, one among three functions of gradient optimization is called : batch_gradient_descent for "batch" mode,
+stochastic_gradient_descent for "online" mode or mini_batch_gradient_descent for "mini-batch" mode. It returns an instance of the class Reg.log with
+attributes corresponding to inputs of the rlgd.fit function, outputs of get_x_y function and outputs of a gradient descent function.
 }
 \examples{
 rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,
 learning_rate = 0.5, max_iter = 100, tol = 1e-4, ncores = 2, standardize = TRUE)
+}
+\seealso{
+\itemize{
+\item \code{\link{get_x_y}}
+\item \code{\link{batch_gradient_descent}}
+\item \code{\link{stochastic_gradient_descent}}
+\item \code{\link{mini_batch_gradient_descent}}
+}
 }
