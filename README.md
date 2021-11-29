@@ -33,7 +33,7 @@ In the R console :
 
     help(package = 'rlgd')
     
-<img src="other_screenshots/help_package.png" height="500"/>  
+<img src="other_screenshots/help_package.png" height="500"/>
 
 You will find a vignette that show an example of how you can use the package and have access to the help of all the functions.   
 You can also use **help(name_function)** or **?name_function** , example: **?rlgd.fit**.
@@ -124,7 +124,7 @@ This last example finally illustrates the *mini-batch* mode of gradient descent 
     
     plot(seq(1, length(res3$cost_history)), res3$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
-![](Tutorial_files_figure/mini_batch.png)
+<img src="Tutorial_files_figure/mini-batch.png" height="500"/>
     
     y_pred <- rlgd.predict(res3, test_set[, res3$x_names], type = "class")
     
