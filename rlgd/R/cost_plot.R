@@ -16,7 +16,7 @@
 #' cost_plot(res)
 cost_plot <- function(Reg.Log){
   return(plot(seq(1, length(Reg.Log$cost_history)), Reg.Log$cost_history, type = "l",
-              xlab="Number of iteration", ylab="Cost history"))  #plot the cost for each iteration
+              xlab="Number of iterations", ylab="Cost history"))  #plot the cost for each iteration
 }
 
 
