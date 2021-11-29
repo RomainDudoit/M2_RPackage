@@ -78,7 +78,9 @@ Now we can apply the prediction function to the test sample :
     
     prop.table(table(ypred,test_set$classe))
     
-    ##
+    ##       0         1
+    ## 0 66.507177  2.870813
+    ## 1  1.435407 29.186603
     
 Then, it is possible to measure the quality of predictions by calculating the accuracy :
     
@@ -99,11 +101,16 @@ Here is another example, this time using the *online* mode of stochastic gradien
 ![](Tutorial_files_figure/online.png)
     
     y_pred <- rlgd.predict(res2, test_set[, res2$x_names], type = "class")
+    
+    ##       0         1
+    ## 0 61.722488  1.913876
+    ## 1  1.913876 34.449761
+    
     accuracy <- mean(y_pred == test_set[, res2$y_name])
     print(accuracy)
     
     ##  [1] 0.9665072
-
+    
 
 ### Example 3 with "mini-batch" mode : 
 
@@ -116,6 +123,11 @@ This last example finally illustrates the *mini-batch* mode of gradient descent 
 ![](Tutorial_files_figure/minibatch.png)
     
     y_pred <- rlgd.predict(res3, test_set[, res3$x_names], type = "class")
+    
+    ##      0         1
+    ##0 65.550239  1.913876
+    ##1  2.392344 30.143541
+   
     accuracy <- mean(y_pred == test_set[, res3$y_name])
     print(accuracy)
     
