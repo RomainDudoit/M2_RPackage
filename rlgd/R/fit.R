@@ -11,10 +11,10 @@
 #' @param formula object of class formula
 #' @param data a data frame
 #' @param mode the gradient descent method used to fit the model : "batch", "online" or "mini-batch"
-#' @param batch_size an integer used to fix the batch size of mini-batch gradient descent.Set to 8 by default.
-#' @param learning_rate a float. Learning rate of the gradient descent. Set to 0.1 by default.
-#' @param max_iter an integer. Number of maximum number of iteration/epoch of the gradient descent
-#' @param tol a numeric. Set to 1e-4 by default. Threshold to stop iteration.
+#' @param batch_size an integer. Only used in mini_batch_gradient_descent function. Used to set the batch size. Set to 8 by default.
+#' @param learning_rate a numeric. Learning rate of the gradient descent. Set to 0.1 by default.
+#' @param max_iter an integer. Number of maximum number of iteration/epoch of the gradient descent. Set to 100 by default.
+#' @param tol a numeric. Set to 1e-4 by default. Threshold to stop iteration loop.
 #' @param ncores only used for batch mode. an integer corresponding to the number of cores used during parallelisation process. Set to 1 by default.
 #' @param standardize logical. FALSE by default, set to TRUE to apply standardization.
 #'

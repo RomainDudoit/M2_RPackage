@@ -1,14 +1,19 @@
 #' Gradient Descent Function - Mini-Batch
 #'
-#' @param x a matrix
-#' @param y a matrix
-#' @param theta a matrix
-#' @param learning_rate a float
-#' @param batch_size a integer
-#' @param max_iter a integer
-#' @param tol a numeric
+#' @param x matrix of features of dimension m x n
+#' @param y matrix of target of dimension m x 1
+#' @param theta matrix of parameters of dimension n x 1
+#' @param learning_rate a numeric. Learning rate of the gradient descent. Set to 0.1 by default in rlgd.fit function.
+#' @param max_iter an integer. Number of maximum number of iteration/epoch of the gradient descent. Set to 100 by default in rlgd.fit function.
+#' @param tol a numeric. Threshold to stop iteration loop. Set to 1e-4 by default in rlgd.fit function.
+#' @param batch_size an integer used to fix the batch size. Set to 8 by default.
+
 #'
-#' @return a list containing 2 matrices : matrix of theta and matrix of cost history
+#' @return a list containing 2 matrix :
+#' \itemize{
+#'   \item theta : final parameters of binary logistic regression
+#'   \item cost history : history of cost function
+#' }
 #' @export
 #'
 #' @examples

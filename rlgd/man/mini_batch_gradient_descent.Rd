@@ -15,22 +15,26 @@ mini_batch_gradient_descent(
 )
 }
 \arguments{
-\item{x}{a matrix}
+\item{x}{matrix of features of dimension m x n}
 
-\item{y}{a matrix}
+\item{y}{matrix of target of dimension m x 1}
 
-\item{theta}{a matrix}
+\item{theta}{matrix of parameters of dimension n x 1}
 
-\item{learning_rate}{a float}
+\item{learning_rate}{a numeric. Learning rate of the gradient descent. Set to 0.1 by default in rlgd.fit function.}
 
-\item{max_iter}{a integer}
+\item{max_iter}{an integer. Number of maximum number of iteration/epoch of the gradient descent. Set to 100 by default in rlgd.fit function.}
 
-\item{batch_size}{a integer}
+\item{batch_size}{an integer used to fix the batch size. Set to 8 by default.}
 
-\item{tol}{a numeric}
+\item{tol}{a numeric. Threshold to stop iteration loop. Set to 1e-4 by default in rlgd.fit function.}
 }
 \value{
-a list containing 2 matrices : matrix of theta and matrix of cost history
+a list containing 2 matrix :
+\itemize{
+\item theta : final parameters of binary logistic regression
+\item cost history : history of cost function
+}
 }
 \description{
 Gradient Descent Function - Mini-Batch

@@ -4,25 +4,27 @@
 \alias{stochastic_gradient_descent}
 \title{Title}
 \usage{
-stochastic_gradient_descent(x, y, theta, learning_rate, max_iter, tol, ncores)
+stochastic_gradient_descent(x, y, theta, learning_rate, max_iter, tol)
 }
 \arguments{
-\item{x}{matrix}
+\item{x}{matrix of features of dimension m x n}
 
-\item{y}{matrix}
+\item{y}{matrix of target of dimension m x 1}
 
-\item{theta}{matrix}
+\item{theta}{matrix of parameters of dimension n x 1}
 
-\item{learning_rate}{float}
+\item{learning_rate}{a numeric. Learning rate of the gradient descent. Set to 0.1 by default in rlgd.fit function.}
 
-\item{max_iter}{integer}
+\item{max_iter}{an integer. Number of maximum number of iteration/epoch of the gradient descent. Set to 100 by default in rlgd.fit function.}
 
-\item{tol}{float}
-
-\item{ncores}{integer}
+\item{tol}{a numeric. Threshold to stop iteration loop. Set to 1e-4 by default in rlgd.fit function.}
 }
 \value{
-list(theta,cost_history)
+a list containing 2 matrix :
+\itemize{
+\item theta : final parameters of binary logistic regression
+\item cost history : history of cost function
+}
 }
 \description{
 Title
@@ -32,5 +34,5 @@ x <- as.matrix(breast_cancer[1:10,1:4])
 y <- breast_cancer[1:10,"classe"]
 y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
-stochastic_gradient_descent(x,y,theta,learning_rate=0.01,max_iter=100,tol=1e-4,ncores=3)
+stochastic_gradient_descent(x,y,theta,learning_rate=0.01,max_iter=100,tol=1e-4)
 }

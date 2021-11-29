@@ -2,30 +2,34 @@
 % Please edit documentation in R/batch_gradient_descent.R
 \name{batch_gradient_descent}
 \alias{batch_gradient_descent}
-\title{Gradient Descent Function - Batch}
+\title{Batch Gradient Descent Algorithm}
 \usage{
 batch_gradient_descent(x, y, theta, learning_rate, max_iter, tol, ncores)
 }
 \arguments{
-\item{x}{a matrix}
+\item{x}{matrix of features of dimension m x n}
 
-\item{y}{a matrix}
+\item{y}{matrix of target of dimension m x 1}
 
-\item{theta}{a matrix}
+\item{theta}{matrix of parameters of dimension n x 1}
 
-\item{learning_rate}{a float}
+\item{learning_rate}{a numeric. Learning rate of the gradient descent. Set to 0.1 by default in rlgd.fit function.}
 
-\item{max_iter}{a integer}
+\item{max_iter}{an integer. Number of maximum number of iteration/epoch of the gradient descent. Set to 100 by default in rlgd.fit function.}
 
-\item{tol}{a numeric}
+\item{tol}{a numeric. Threshold to stop iteration loop. Set to 1e-4 by default in rlgd.fit function.}
 
-\item{ncores}{a integer}
+\item{ncores}{an integer. corresponding to the number of cores used during parallelisation process. Set to 1 by default in rlgd.fit function.}
 }
 \value{
-a list containing 2 matrices : matrix of theta and matrix of cost history
+a list containing 2 matrix :
+\itemize{
+\item theta : final parameters of binary logistic regression
+\item cost history : history of cost function
+}
 }
 \description{
-Gradient Descent Function - Batch
+Perform Batch mode of Gradient Descent
 }
 \examples{
 x <- as.matrix(breast_cancer[1:10,1:4])
@@ -33,5 +37,5 @@ y <- breast_cancer[1:10,"classe"]
 y <- as.matrix(ifelse(y$classe =="malignant",1,0))
 theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 ncores <- 2
-batch_gradient_descent(x,y,theta,learning_rate=0.01,max_iter = 100,tol = 1e-4, ncores)
+batch_gradient_descent(x, y, theta, learning_rate = 0.01, max_iter = 100, tol = 1e-4, ncores)
 }

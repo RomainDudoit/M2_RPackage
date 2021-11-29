@@ -23,13 +23,13 @@ rlgd.fit(
 
 \item{mode}{the gradient descent method used to fit the model : "batch", "online" or "mini-batch"}
 
-\item{batch_size}{an integer used to fix the batch size of mini-batch gradient descent.Set to 8 by default.}
+\item{batch_size}{an integer. Only used in mini_batch_gradient_descent function. Used to set the batch size. Set to 8 by default.}
 
-\item{learning_rate}{a float. Learning rate of the gradient descent. Set to 0.1 by default.}
+\item{learning_rate}{a numeric. Learning rate of the gradient descent. Set to 0.1 by default.}
 
-\item{max_iter}{an integer. Number of maximum number of iteration/epoch of the gradient descent}
+\item{max_iter}{an integer. Number of maximum number of iteration/epoch of the gradient descent. Set to 100 by default.}
 
-\item{tol}{a numeric. Set to 1e-4 by default. Threshold to stop iteration.}
+\item{tol}{a numeric. Set to 1e-4 by default. Threshold to stop iteration loop.}
 
 \item{ncores}{only used for batch mode. an integer corresponding to the number of cores used during parallelisation process. Set to 1 by default.}
 
