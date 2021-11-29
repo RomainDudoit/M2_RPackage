@@ -34,9 +34,6 @@ The dataset is therefore in the *breast_cancer* object, so we can start fitting 
 Data preparation
 ----------------
 
-### Conversion of the target variable to 0/1 if it is not the case
-
-
 ### Separation of training and test samples
 
 For the example tests to follow, we divide our dataset into two samples: training sample and test sample.
@@ -55,11 +52,6 @@ For the example tests to follow, we divide our dataset into two samples: trainin
     
     ## 209  10
     
-
-### Overview of data with get_x_y function
-
-
-
 ### Example 1 with "batch" mode : 
 
 In this first example we illustrate the *batch* mode of gradient descent. The first step is to apply the fit function to our learning sample :
@@ -76,7 +68,7 @@ Now we can apply the prediction function to the test sample :
 
     y_pred <- predict(res1, test_set[, res1$x_names], type = "class")
     
-    prop.table(table(ypred,test_set$classe))
+    prop.table(table(y_pred,test_set$class))
     
     ##       0         1
     ## 0 66.507177  2.870813
@@ -102,6 +94,8 @@ Here is another example, this time using the *online* mode of stochastic gradien
     
     y_pred <- rlgd.predict(res2, test_set[, res2$x_names], type = "class")
     
+    prop.table(table(y_pred,test_set$class))
+    
     ##       0         1
     ## 0 61.722488  1.913876
     ## 1  1.913876 34.449761
@@ -123,6 +117,8 @@ This last example finally illustrates the *mini-batch* mode of gradient descent 
 ![](Tutorial_files_figure/mini_batch.png)
     
     y_pred <- rlgd.predict(res3, test_set[, res3$x_names], type = "class")
+    
+    prop.table(table(y_pred,test_set$class))
     
     ##      0         1
     ##0 65.550239  1.913876
