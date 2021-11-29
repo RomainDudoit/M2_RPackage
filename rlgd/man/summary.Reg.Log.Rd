@@ -2,7 +2,7 @@
 % Please edit documentation in R/summary.R
 \name{summary.Reg.Log}
 \alias{summary.Reg.Log}
-\title{Overload of print function for object of class Reg.log}
+\title{Overload of summary function for object of class Reg.Log}
 \usage{
 \method{summary}{Reg.Log}(object, ...)
 }
@@ -15,7 +15,7 @@
 to do
 }
 \description{
-Overload of print function for object of class Reg.log
+Overload of summary function for object of class Reg.Log
 }
 \examples{
 res <- rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,

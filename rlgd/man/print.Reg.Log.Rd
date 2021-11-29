@@ -2,12 +2,12 @@
 % Please edit documentation in R/print.R
 \name{print.Reg.Log}
 \alias{print.Reg.Log}
-\title{Overload of print function for x of class Reg.log}
+\title{Overload of print function for x of class Reg.Log}
 \usage{
 \method{print}{Reg.Log}(x, ...)
 }
 \arguments{
-\item{x}{of S3 class Reg.log}
+\item{x}{of S3 class Reg.Log}
 
 \item{...}{other parameters}
 }
@@ -15,7 +15,7 @@
 to do
 }
 \description{
-Overload of print function for x of class Reg.log
+Overload of print function for x of class Reg.Log
 }
 \examples{
 res <- rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,

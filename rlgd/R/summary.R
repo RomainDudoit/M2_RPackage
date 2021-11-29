@@ -1,4 +1,4 @@
-#' Overload of print function for object of class Reg.log
+#' Overload of summary function for object of class Reg.Log
 #'
 #' @param object of S3 class Reg.log
 #' @param ... other parameters

@@ -1,6 +1,6 @@
-#' Overload of print function for x of class Reg.log
+#' Overload of print function for x of class Reg.Log
 #'
-#' @param x of S3 class Reg.log
+#' @param x of S3 class Reg.Log
 #' @param ... other parameters
 #' @return to do
 #' @export
