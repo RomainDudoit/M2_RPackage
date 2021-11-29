@@ -64,7 +64,7 @@ For the example tests to follow, we divide our dataset into two samples: trainin
 
 In this first example we illustrate the *batch* mode of gradient descent. The first step is to apply the fit function to our learning sample :
 
-    res1 <- fit(classe ~ ., train_set, mode = "batch", learning_rate = 0.01, max_iter = 1000, tol = 1e-4)
+    res1 <- fit(classe ~ ., train_set, mode = "batch", learning_rate = 0.01, max_iter = 5000, tol = 1e-4)
         
 The object *res1* contains the coefficient matrix of the model and the cost matrix which can be illustrated as follows:
     
