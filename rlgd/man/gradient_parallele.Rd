@@ -2,18 +2,21 @@
 % Please edit documentation in R/gradient_parallele.R
 \name{gradient_parallele}
 \alias{gradient_parallele}
-\title{gradient parallele}
+\title{Gradient parallele}
 \usage{
 gradient_parallele(X, theta)
 }
 \arguments{
-\item{X}{matrix}
+\item{X}{list of several blocks (one for each used heart) containing parts of x and y}
 
-\item{theta}{matrix}
+\item{theta}{matrix of parameters}
 }
 \value{
-gradient
+the calculated gradient
 }
 \description{
-gradient parallele
+This function is a simple copy of the gradient function but with the X parameters that replace x and y.
+}
+\details{
+It was done like that because the parSapply used in the parallelisation function require in the input the list of the blocs used to parallelize the function. Because of that, we had to merge x and y in one block.
 }

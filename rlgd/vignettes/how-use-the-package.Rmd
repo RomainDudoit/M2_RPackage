@@ -50,6 +50,10 @@ test_set <- breast_cancer[-train_index, ]
 ```{r}
 res <- rlgd.fit(classe~.,train_set,mode="batch", max_iter = 1000,learning_rate = 0.01, tol = 1e-5, standardize = T)
 ```
+```{r}
+print(res)
+```
+
 
 ```{r}
 y_pred<- rlgd.predict(res,test_set[,res$x_names],"class")
