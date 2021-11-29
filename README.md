@@ -14,7 +14,8 @@ Description and help of the package
 In the R console : 
 
     help(package = 'rlgd')
-
+    
+![](Other screenshoots/help_package.png)
 Tutorial for package usage
 --------------------------
 
