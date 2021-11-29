@@ -72,6 +72,7 @@ The object *res1* contains the coefficient matrix of the model and the cost matr
     
     plot(seq(1, length(res1$cost_history)), res1$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
+<img src="Tutorial_files_figure/batch.png" height="500"/>  
 ![](Tutorial_files_figure/batch.png)
 
 Now we can apply the prediction function to the test sample :
