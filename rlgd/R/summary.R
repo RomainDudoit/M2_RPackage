@@ -11,12 +11,7 @@
 #' summary(res)
 summary.Reg.Log <- function(object, ...) {
   cat("Formula:", as.character(object$formula), "\n")
-  cat("Target:", object$y_name, "\n")
-  cat("Features:", object$x_names, "\n")
   cat("Mode:", object$mode, "\n")
-  cat("Learning rate:", object$learning_rate, "\n")
-  cat("Max_iter:", object$max_iter, "\n")
-  cat("Batch size:", object$batch_size, "\n")
   cat("Coefficient:", "\n")
   print(rownames(object$theta))
   print(object$theta)

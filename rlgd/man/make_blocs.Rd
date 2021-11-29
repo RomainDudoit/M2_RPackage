@@ -7,17 +7,17 @@
 make_blocs(x, y, ncores)
 }
 \arguments{
-\item{x}{matrix}
+\item{x}{matrix of features variable}
 
-\item{y}{matrix}
+\item{y}{matrix of target variable}
 
-\item{ncores}{integer}
+\item{ncores}{integer that indicate how much hearts to use pr the parallelisation}
 }
 \value{
-blocs
+blocs, a list of several blocs (one for each used heart) containing parts of x and y
 }
 \description{
-Creation of blocs for parallelisation
+The goal here is to create an input for the parSapply in the parallelisation function. It requires several blocs to used the parallelisaton on. In our case, each blocs is composed of a part of x and y, the total give the complete x and y
 }
 \examples{
 x <- as.matrix(breast_cancer[1:10,1:4])
