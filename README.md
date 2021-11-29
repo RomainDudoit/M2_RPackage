@@ -15,6 +15,7 @@ In the R console :
 
     help(package = 'rlgd')
     
+<img src="https://github.com/Romain8816/M2_RPackage/tree/main/other_screenshots/help_package.png" width="100" height="100">  
 ![](other_screenshots/help_package.png)  
 
 Tutorial for package usage
