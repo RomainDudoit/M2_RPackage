@@ -9,7 +9,7 @@ get_x_y(formula, data, standardize)
 \arguments{
 \item{formula}{object of class formula}
 
-\item{data}{dataframe including features and target variable}
+\item{data}{data frame including features and target variable}
 
 \item{standardize}{logical, FALSE by default, set to TRUE to apply standardization.}
 }
@@ -20,7 +20,7 @@ several variables in a list
 \item features : matrix of features from R formula
 \item y_name : the name of the target variable
 \item x_names : the names of the features
-\item preprocess : NUll or contains output of preProcess function of the caret package. It will be used in rlgd.predict() function to apply or not
+\item preprocess : NULL or contains output of preProcess function of the caret package. It will be used in rlgd.predict() function to apply or not
 standardization on new data.
 \item xlevs : list of levels for each factor in the data frame. It will be used in rlgd.predict() function to process the same one hot encoding
 on new data.
@@ -36,7 +36,7 @@ After transforming the potential character variables into factor, a model matrix
 The model matrix is the matrix that contains in the first column the intercept and the features of
 the formula in the others columns. One hot encoding is automatically performed on factors during the creation of the model matrix.
 
-The function can also perform standardization on continuous or no binary (0,1) numeric variables with the preprocess function of the caret package.
+The function can also perform standardization on continuous or not binary (0,1) numeric variables with the preprocess function of the caret package.
 This function also check if the target variable is only binary since the package cannot do multinomial logistic regression.
 }
 \examples{

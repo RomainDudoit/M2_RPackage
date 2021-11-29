@@ -5,7 +5,7 @@
 #'
 #' @details Control of the data and preprocessing is done with get_x_y_function. After random initialization of the parameters in theta,
 #' and according to the chosen mode, one among three functions of gradient optimization is called : batch_gradient_descent for "batch" mode,
-#' stochastic_gradient_descent for "online" mode or mini_batch_gradient_descent for "mini-batch" mode. It returns an instance of the class Reg.log with
+#' stochastic_gradient_descent for "online" mode or mini_batch_gradient_descent for "mini-batch" mode. It returns an instance of the S3 class Reg.log with
 #' attributes corresponding to inputs of the rlgd.fit function, outputs of get_x_y function and outputs of a gradient descent function.
 #'
 #' @param formula object of class formula

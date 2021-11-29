@@ -2,22 +2,28 @@
 % Please edit documentation in R/predict.R
 \name{rlgd.predict}
 \alias{rlgd.predict}
-\title{Predict function}
+\title{rlgd.Predict: Predict Method for rlgd.fit function}
 \usage{
 rlgd.predict(Reg.log, newdata, type)
 }
 \arguments{
-\item{Reg.log}{variable containing the result of the fit function}
+\item{Reg.log}{object of the S3 class Reg.log provide by the rlgd.fit function.}
 
-\item{newdata}{matrix}
+\item{newdata}{a data frame of new data to predict target variable. Should contains features only.}
 
-\item{type}{string ('class' or 'posterior')}
+\item{type}{indicate the type of prediction 'class' or 'posterior'}
 }
 \value{
-predicted classes or probabilites to belong to classes
+predicted classes or class probabilities of the binary target variable defined in rlgd.fit function.
 }
 \description{
-Predict function
+rlgd.Predict: Predict Method for rlgd.fit function
+}
+\details{
+To work, the function need a data frame like the one used in the rlgd.fit function i.e same order and number of features
+names. Also data types should be same. A control is only done on the order and number of features in the new data frame. The data is then
+transformed in a matrix model like in rlgd.fit function with the same one hot encoding of the factors. Standardization is also performed
+if if was done in rlgd.fit function by looking the attributes of the Reg.log object.
 }
 \examples{
 set.seed(10)
@@ -29,4 +35,10 @@ res <- rlgd.fit(classe ~ ., train_set, mode = "batch", batch_size = 32, learning
 max_iter = 100, tol = 1e-4, standardize = FALSE)
 rlgd.predict(res, test_set[, res$x_names], type = "class")
 
+}
+\seealso{
+\itemize{
+\item \code{\link{rlgd.fit}}
+\item \code{\link{probability}}
+}
 }
