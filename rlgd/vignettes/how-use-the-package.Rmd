@@ -1,5 +1,5 @@
 ---
-title: "how-use-the-package"
+title: "how-to-use-the-package"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{how-use-the-package}

@@ -2,24 +2,27 @@
 % Please edit documentation in R/parallelisation.R
 \name{parallelisation}
 \alias{parallelisation}
-\title{parallelisation function}
+\title{Parallelisation function}
 \usage{
 parallelisation(blocs, fonction, theta, clust)
 }
 \arguments{
-\item{blocs}{set of data}
+\item{blocs}{list of several blocs (one for each used heart) containing parts of x and y}
 
-\item{fonction}{function to parallelize}
+\item{fonction}{function to parallelize, in our case the gradient_parallele function}
 
-\item{theta}{matrix}
+\item{theta}{matrix of parameters}
 
-\item{clust}{cluster of blocks}
+\item{clust}{cluster of nodes for parallel computation (one for each used heart)}
 }
 \value{
-sum of gradients of each blocs
+sum of gradients applied to each blocs
 }
 \description{
-parallelisation function
+The aim of parallelization is to speed up the calculation time of an algorithm by making the most of the increased capacity of multicore processors.
+}
+\details{
+The role of the parSapply function is to execute the selected function on each blocs at the same time (parallelisation).
 }
 \examples{
 x <- as.matrix(breast_cancer[1:10,1:4])

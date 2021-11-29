@@ -12,8 +12,6 @@
 summary.Reg.Log <- function(object, ...) {
   cat("Formula:", as.character(object$formula), "\n")
   cat("Mode:", object$mode, "\n")
-  cat("Coefficient:", "\n")
-  print(rownames(object$theta))
+  cat("Coefficients:", "\n")
   print(object$theta)
-  cat("Cost history:", object$cost_history)
 }
