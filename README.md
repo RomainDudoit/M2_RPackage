@@ -100,7 +100,7 @@ In this first example we illustrate the *batch* mode of gradient descent. The fi
         
 The object *res1* contains the coefficient matrix of the model and the cost matrix which can be illustrated as follows:
     
-    plot(seq(1, length(res1$cost_history)), res1$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
+    cost_function(res1)
     
 <img src="Tutorial_files_figure/batch.png" height="500"/>
 
@@ -149,7 +149,7 @@ Here is another example, this time using the *online* mode of stochastic gradien
     ##  normnucl     0.16260251
     ##  mitoses      0.38105830
     
-    plot(seq(1, length(res2$cost_history)), res2$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
+    cost_function(res2)
     
  <img src="Tutorial_files_figure/online.png" height="500"/>
     
@@ -194,7 +194,7 @@ This last example finally illustrates the *mini-batch* mode of gradient descent 
     ##  normnucl     0.14783400
     ##  mitoses      0.14787485
     
-    plot(seq(1, length(res3$cost_history)), res3$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
+    cost_function(res3)
     
 <img src="Tutorial_files_figure/mini_batch.png" height="500"/>
     
