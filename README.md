@@ -124,7 +124,7 @@ This last example finally illustrates the *mini-batch* mode of gradient descent 
     
     plot(seq(1, length(res3$cost_history)), res3$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
-<img src="Tutorial_files_figure/mini-batch.png" height="500"/>
+<img src="Tutorial_files_figure/mini_batch.png" height="500"/>
     
     y_pred <- rlgd.predict(res3, test_set[, res3$x_names], type = "class")
     
