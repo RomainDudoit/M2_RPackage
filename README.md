@@ -39,10 +39,6 @@ You will find a vignette that show an example of how you can use the package and
 You can also use **help(name_function)** or **?name_function** , example: **?rlgd.fit**.
 
 
-**Note: If you are unsure about a function, use **help(name_function)** or **?name_function** , example: **?fit**.
-
-
-
 ------------------------------------------------------------------------
 
 Data preparation
