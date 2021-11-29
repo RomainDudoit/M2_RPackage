@@ -65,17 +65,38 @@ For the example tests to follow, using "caret" library, we divide our dataset in
     
     dim(train_set)
     
-    ##  490 10
+    ##  490  10
     
     dim(test_set)
     
-    ## 209  10
+    ##  209  10
     
 ### Example 1 with "batch" mode : 
 
 In this first example we illustrate the *batch* mode of gradient descent. The first step is to apply the fit function to our learning sample :
 
     res1 <- rlgd.fit(classe ~ ., train_set, mode = "batch", learning_rate = 0.01, max_iter = 5000, tol = 1e-4)
+    print(res1)
+    
+    ##  Formula: classe ~ . 
+    ##  Target: classe 
+    ##  Features: clump ucellsize ucellshape mgadhesion sepics bnuclei bchromatin normnucl mitoses 
+    ##  Gradient descente mode: batch 
+    ##  Learning rate: 0.01 
+    ##  Max_iter: 5000 
+    ##  Batch size: 8 
+    ##  Coefficients: 
+    ##                     [,1]
+    ##  (Intercept) -4.01528175
+    ##  clump        0.01604939
+    ##  ucellsize    0.42381968
+    ##  ucellshape   0.15137412
+    ##  mgadhesion   0.15773284
+    ##  sepics      -0.18437898
+    ##  bnuclei      0.39629127
+    ##  bchromatin  -0.05787013
+    ##  normnucl     0.18714164
+    ##  mitoses      0.01796167
         
 The object *res1* contains the coefficient matrix of the model and the cost matrix which can be illustrated as follows:
     
@@ -105,7 +126,28 @@ Then, it is possible to measure the quality of predictions by calculating the ac
 
 Here is another example, this time using the *online* mode of stochastic gradient descent.
 
-    res2 <- rlgd.fit(classe ~ ., train_set, mode = "online", learning_rate = 0.01, max_iter = 100, tol = 1e-4) # nolint
+    res2 <- rlgd.fit(classe ~ ., train_set, mode = "online", learning_rate = 0.01, max_iter = 100, tol = 1e-4) 
+    print(res2)
+    
+    ##  Formula: classe ~ . 
+    ##  Target: classe 
+    ##  Features: clump ucellsize ucellshape mgadhesion sepics bnuclei bchromatin normnucl mitoses 
+    ##  Gradient descente mode: online 
+    ##  Learning rate: 0.01 
+    ##  Max_iter: 100 
+    ##  Batch size: 8 
+    ##  Coefficients: 
+    ##                     [,1]
+    ##  (Intercept) -7.94287340
+    ##  clump        0.28935386
+    ##  ucellsize    0.23862502
+    ##  ucellshape   0.23481740
+    ##  mgadhesion   0.17624696
+    ##  sepics       0.07411498
+    ##  bnuclei      0.39598083
+    ##  bchromatin   0.27515833
+    ##  normnucl     0.16260251
+    ##  mitoses      0.38105830
     
     plot(seq(1, length(res2$cost_history)), res2$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
@@ -129,7 +171,28 @@ Here is another example, this time using the *online* mode of stochastic gradien
 
 This last example finally illustrates the *mini-batch* mode of gradient descent applied to logistic regression.
 
-    res3 <- rlgd.fit(classe ~ ., train_set, mode = "mini-batch", batch_size = 32, learning_rate = 0.01, max_iter = 2000, tol = 1e-4) # nolint
+    res3 <- rlgd.fit(classe ~ ., train_set, mode = "mini-batch", batch_size = 32, learning_rate = 0.01, max_iter = 2000, tol = 1e-4)
+    print(res3)
+    
+    ##  Formula: classe ~ . 
+    ##  Target: classe 
+    ##  Features: clump ucellsize ucellshape mgadhesion sepics bnuclei bchromatin normnucl mitoses 
+    ##  Gradient descente mode: mini-batch 
+    ##  Learning rate: 0.01 
+    ##  Max_iter: 2000 
+    ##  Batch size: 32 
+    ##  Coefficients: 
+    ##                     [,1]
+    ##  (Intercept) -5.46314890
+    ##  clump        0.13175171
+    ##  ucellsize    0.26943800
+    ##  ucellshape   0.21473779
+    ##  mgadhesion   0.16993282
+    ##  sepics      -0.06269965
+    ##  bnuclei      0.37283118
+    ##  bchromatin   0.09582151
+    ##  normnucl     0.14783400
+    ##  mitoses      0.14787485
     
     plot(seq(1, length(res3$cost_history)), res3$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
