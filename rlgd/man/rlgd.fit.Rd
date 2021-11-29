@@ -2,7 +2,7 @@
 % Please edit documentation in R/fit.R
 \name{rlgd.fit}
 \alias{rlgd.fit}
-\title{Fit function}
+\title{Fit Binary Logistic Regression using gradient descent}
 \usage{
 rlgd.fit(
   formula,
@@ -17,29 +17,30 @@ rlgd.fit(
 )
 }
 \arguments{
-\item{formula}{an object of class formula}
+\item{formula}{object of class formula e.g y ~ a + b}
 
-\item{data}{a matrix}
+\item{data}{a dataframe}
 
-\item{mode}{the method to be used in fitting the model : "batch", "online" or "mini-batch"}
+\item{mode}{the gradient descent method used to fit the model : "batch", "online" or "mini-batch"}
 
-\item{batch_size}{a integer}
+\item{batch_size}{a integer used to fix the batch size of mini-batch gradient descent.}
 
-\item{learning_rate}{a float}
+\item{learning_rate}{a float. Learning rate of the gradient descent.}
 
-\item{max_iter}{a integer}
+\item{max_iter}{an integer. Number of maximum number of iteration/epoch of the gradient descent}
 
-\item{tol}{a numeric}
+\item{tol}{a numeric. Set to 1e-4 by default. Threshold to stop iteration.}
 
-\item{ncores}{a integer}
+\item{ncores}{only used for batch mode. an integer corresponding to the number of cores used during parallelisation process}
 
-\item{standardize}{TRUE or FALSE}
+\item{standardize}{logical. FALSE by default, set to TRUE to apply standardization.}
 }
 \value{
-an instance
+an instance of the class Reg.log
 }
 \description{
-Fit function
+This function perform binary logistic regression using gradient descent optimization (batch, online or mini-batch). It can use
+parallel computing for batch mode.
 }
 \examples{
 rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,

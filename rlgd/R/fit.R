@@ -1,16 +1,18 @@
-#' Fit function
+#' Fit Binary Logistic Regression using gradient descent
 #'
-#' @param formula an object of class formula
-#' @param data a matrix
-#' @param mode the method to be used in fitting the model : "batch", "online" or "mini-batch"
-#' @param batch_size a integer
-#' @param learning_rate a float
-#' @param max_iter a integer
-#' @param tol a numeric
-#' @param ncores a integer
-#' @param standardize TRUE or FALSE
+#' This function perform binary logistic regression using gradient descent optimization (batch, online or mini-batch). It can use
+#' parallel computing for batch mode.
+#' @param formula object of class formula e.g y ~ a + b
+#' @param data a dataframe
+#' @param mode the gradient descent method used to fit the model : "batch", "online" or "mini-batch"
+#' @param batch_size a integer used to fix the batch size of mini-batch gradient descent.
+#' @param learning_rate a float. Learning rate of the gradient descent.
+#' @param max_iter an integer. Number of maximum number of iteration/epoch of the gradient descent
+#' @param tol a numeric. Set to 1e-4 by default. Threshold to stop iteration.
+#' @param ncores only used for batch mode. an integer corresponding to the number of cores used during parallelisation process
+#' @param standardize logical. FALSE by default, set to TRUE to apply standardization.
 #'
-#' @return an instance
+#' @return an instance of the class Reg.log
 #' @importFrom stats rnorm
 #' @export
 #'
@@ -31,13 +33,21 @@ rlgd.fit <- function(formula, data, mode, batch_size=16, learning_rate = 0.1,
 
 
   if (mode == "batch" || (mode == "mini-batch" && batch_size >= nrow(y))) {
+
     gradient_descent <- batch_gradient_descent(x, y, initial_theta, learning_rate, max_iter, tol, ncores)
+
   } else if (mode == "online" || (mode == "mini-batch" && batch_size == 1)) {
+
     gradient_descent <- stochastic_gradient_descent(x, y, initial_theta, learning_rate, max_iter, tol)
+
   } else if (mode == "mini-batch") {
+
     gradient_descent <- mini_batch_gradient_descent(x, y, initial_theta, learning_rate, max_iter, batch_size, tol)
+
   } else {
+
     stop("Invalid mode, please select 'batch', 'online' or 'mini-batch'")
+
   }
 
   # Creation of the instance
