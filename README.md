@@ -9,6 +9,12 @@ In the R console, after the installation of the "devtools" library, copy paste t
 
     devtools::install_github(repo='Romain8816/M2_RPackage/rlgd',build_vignettes = TRUE)
 
+Description and help of the package
+----------------------
+In the R console : 
+
+    help(package = 'rlgd')
+
 Tutorial for package usage
 --------------------------
 
