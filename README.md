@@ -21,7 +21,7 @@ Once the package is installed, the library can be load using the standard comman
 
 First, you need to import a dataset (with a set of categorical variables Xi and a categorical variable Y). In this example, we will use the breast_cancer dataset. This dataset is included in the rlgd package.
 
-    rlgd <- rlgd::breast_cancer // data(breast_cancer)
+    breast_cancer <- rlgd::breast_cancer
 
 The breast_cancer dataset includes information on patient cells and contains 9 explanatory variables and 1 binary target variable: class which takes the value malignant or begnin.
 
@@ -47,7 +47,13 @@ For the example tests to follow, we divide our dataset into two samples: trainin
     train_set <- breast_cancer[train_index, ]
     test_set <- breast_cancer[-train_index, ]
     
-    ##  print shape par exemple
+    dim(train_set)
+    
+    ##  490 10
+    
+    dim(test_set)
+    
+    ## 209  10
     
 
 ### Overview of data with get_x_y function
@@ -58,10 +64,8 @@ For the example tests to follow, we divide our dataset into two samples: trainin
 
 In this first example we illustrate the *batch* mode of gradient descent. The first step is to apply the fit function to our learning sample :
 
-    res1 <- fit(classe ~ ., train_set, mode = "batch", batch_size = 32, learning_rate = 0.01, max_iter = 1000, tol = 1e-4)
-    
-    ##  print 
-    
+    res1 <- fit(classe ~ ., train_set, mode = "batch", learning_rate = 0.01, max_iter = 1000, tol = 1e-4)
+        
 The object *res1* contains the coefficient matrix of the model and the cost matrix which can be illustrated as follows:
     
     plot(seq(1, length(res1$cost_history)), res1$cost_history, type = "l")
@@ -71,6 +75,10 @@ The object *res1* contains the coefficient matrix of the model and the cost matr
 Now we can apply the prediction function to the test sample :
 
     y_pred <- predict(res1, test_set[, res1$x_names], type = "class")
+    
+    prop.table(table(ypred,test_set$classe))
+    
+    ##
     
 Then, it is possible to measure the quality of predictions by calculating the accuracy :
     
@@ -84,9 +92,7 @@ Then, it is possible to measure the quality of predictions by calculating the ac
 
 Here is another example, this time using the *online* mode of stochastic gradient descent.
 
-    res2 <- rlgd.fit(classe ~ ., train_set, mode = "online", batch_size = 32, learning_rate = 0.01, max_iter = 100, tol = 1e-4) # nolint
-    
-    ##  print
+    res2 <- rlgd.fit(classe ~ ., train_set, mode = "online", learning_rate = 0.01, max_iter = 100, tol = 1e-4) # nolint
     
     plot(seq(1, length(res2$cost_history)), res2$cost_history, type = "l")
     
@@ -104,8 +110,6 @@ Here is another example, this time using the *online* mode of stochastic gradien
 This last example finally illustrates the *mini-batch* mode of gradient descent applied to logistic regression.
 
     res3 <- rlgd.fit(classe ~ ., train_set, mode = "mini-batch", batch_size = 32, learning_rate = 0.01, max_iter = 2000, tol = 1e-4) # nolint
-    
-    ##  print
     
     plot(seq(1, length(res3$cost_history)), res3$cost_history, type = "l")
     
