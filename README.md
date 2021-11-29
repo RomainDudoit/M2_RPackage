@@ -72,8 +72,7 @@ The object *res1* contains the coefficient matrix of the model and the cost matr
     
     plot(seq(1, length(res1$cost_history)), res1$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
-<img src="Tutorial_files_figure/batch.png" height="500"/>  
-![](Tutorial_files_figure/batch.png)
+<img src="Tutorial_files_figure/batch.png" height="500"/>
 
 Now we can apply the prediction function to the test sample :
 
@@ -101,7 +100,7 @@ Here is another example, this time using the *online* mode of stochastic gradien
     
     plot(seq(1, length(res2$cost_history)), res2$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
-![](Tutorial_files_figure/online.png)
+ <img src="Tutorial_files_figure/online.png" height="500"/>
     
     y_pred <- rlgd.predict(res2, test_set[, res2$x_names], type = "class")
     
