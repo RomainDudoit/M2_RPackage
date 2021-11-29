@@ -60,7 +60,7 @@ In this first example we illustrate the *batch* mode of gradient descent. The fi
         
 The object *res1* contains the coefficient matrix of the model and the cost matrix which can be illustrated as follows:
     
-    plot(seq(1, length(res1$cost_history)), res1$cost_history, type = "l")
+    plot(seq(1, length(res1$cost_history)), res1$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
 ![](Tutorial_files_figure/batch.png)
 
@@ -88,7 +88,7 @@ Here is another example, this time using the *online* mode of stochastic gradien
 
     res2 <- rlgd.fit(classe ~ ., train_set, mode = "online", learning_rate = 0.01, max_iter = 100, tol = 1e-4) # nolint
     
-    plot(seq(1, length(res2$cost_history)), res2$cost_history, type = "l")
+    plot(seq(1, length(res2$cost_history)), res2$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
 ![](Tutorial_files_figure/online.png)
     
@@ -112,7 +112,7 @@ This last example finally illustrates the *mini-batch* mode of gradient descent 
 
     res3 <- rlgd.fit(classe ~ ., train_set, mode = "mini-batch", batch_size = 32, learning_rate = 0.01, max_iter = 2000, tol = 1e-4) # nolint
     
-    plot(seq(1, length(res3$cost_history)), res3$cost_history, type = "l")
+    plot(seq(1, length(res3$cost_history)), res3$cost_history, type = "l",xlab="Number of iteration", ylab="Cost history")
     
 ![](Tutorial_files_figure/mini_batch.png)
     
