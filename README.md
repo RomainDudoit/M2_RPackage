@@ -44,6 +44,15 @@ You can also use **help(name_function)** or **?name_function** , example: **?rlg
 Data preparation
 ----------------
 
+### Conversion of the target variable to 0/1
+
+    breast_cancer$classe <- as.factor(breast_cancer$classe)
+    print(levels(breast_cancer$classe))
+    levels(breast_cancer$classe) <- c(0, 1)
+    breast_cancer$classe <- as.numeric(levels(breast_cancer$classe))[breast_cancer$classe]
+    breast_cancer
+
+
 ### Separation of training and test samples
 
 For the example tests to follow, using "caret" library, we divide our dataset into two samples: training sample and test sample. 
