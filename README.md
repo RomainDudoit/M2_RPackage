@@ -66,7 +66,7 @@ For the example tests to follow, using "caret" library, we divide our dataset in
 
 In this first example we illustrate the *batch* mode of gradient descent. The first step is to apply the fit function to our learning sample :
 
-    res1 <- fit(classe ~ ., train_set, mode = "batch", learning_rate = 0.01, max_iter = 5000, tol = 1e-4)
+    res1 <- rlgd.fit(classe ~ ., train_set, mode = "batch", learning_rate = 0.01, max_iter = 5000, tol = 1e-4)
         
 The object *res1* contains the coefficient matrix of the model and the cost matrix which can be illustrated as follows:
     
@@ -76,7 +76,7 @@ The object *res1* contains the coefficient matrix of the model and the cost matr
 
 Now we can apply the prediction function to the test sample :
 
-    y_pred <- predict(res1, test_set[, res1$x_names], type = "class")
+    y_pred <- rlgd.predict(res1, test_set[, res1$x_names], type = "class")
     
     prop.table(table(y_pred,test_set$class))
     
