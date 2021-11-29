@@ -78,7 +78,7 @@ Now we can apply the prediction function to the test sample :
 
     y_pred <- rlgd.predict(res1, test_set[, res1$x_names], type = "class")
     
-    prop.table(table(y_pred,test_set$class))
+    prop.table(table(y_pred,test_set$classe))
     
     ##       0         1
     ## 0 66.507177  2.870813
