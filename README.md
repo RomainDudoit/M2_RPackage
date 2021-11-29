@@ -5,9 +5,8 @@ The rlgd package is intended to provide the best statistical model to study the 
 
 Installing the package
 ----------------------
-In the R console, copy paste the following code :
-    
-    install.packages("devtools")
+In the R console, after the installation of the "devtools" library, copy paste the following code :
+
     devtools::install_github(repo='Romain8816/M2_RPackage/rlgd',build_vignettes = TRUE)
 
 Tutorial for package usage
