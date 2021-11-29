@@ -23,5 +23,8 @@ theta <- as.matrix(rnorm(n = dim(x)[2], mean = 0, sd = 1))
 probability(x,theta)
 }
 \seealso{
-\code{\link{sigmoid}} \code{\link{x_dot_theta}}
+\itemize{
+\item \code{\link{sigmoid}}
+\item \code{\link{x_dot_theta}}
+}
 }

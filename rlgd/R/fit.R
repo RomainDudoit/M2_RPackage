@@ -1,9 +1,15 @@
 #' Fit Binary Logistic Regression using gradient descent
 #'
 #' This function perform binary logistic regression using gradient descent optimization (batch, online or mini-batch). It can use
-#' parallel computing for batch mode.
-#' @param formula object of class formula e.g y ~ a + b
-#' @param data a dataframe
+#' parallel computing only for batch mode.
+#'
+#' @details Control of the data and preprocessing is done with get_x_y_function. After random initialization of the parameters in theta,
+#' and according to the chosen mode, one among three functions of gradient optimization is called : batch_gradient_descent for "batch" mode,
+#' stochastic_gradient_descent for "online" mode or mini_batch_gradient_descent for "mini-batch" mode.It returns an instance on the class Reg.log with
+#'
+#'
+#' @param formula object of class formula
+#' @param data a data frame
 #' @param mode the gradient descent method used to fit the model : "batch", "online" or "mini-batch"
 #' @param batch_size a integer used to fix the batch size of mini-batch gradient descent.
 #' @param learning_rate a float. Learning rate of the gradient descent.
@@ -12,9 +18,17 @@
 #' @param ncores only used for batch mode. an integer corresponding to the number of cores used during parallelisation process
 #' @param standardize logical. FALSE by default, set to TRUE to apply standardization.
 #'
-#' @return an instance of the class Reg.log
+#' @return an instance of the class Reg.log with the following attributes :
+#'
 #' @importFrom stats rnorm
 #' @export
+#' @seealso
+#' \itemize{
+#'   \item \code{\link{get_x_y}}
+#'   \item \code{\link{batch_gradient_descent}}
+#'   \item \code{\link{stochastic_gradient_descent}}
+#'   \item \code{\link{mini_batch_gradient_descent}}
+#' }
 #'
 #' @examples
 #' rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,

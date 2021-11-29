@@ -1,11 +1,11 @@
 Package: rlgd
-Title: Perform Logistic Regression with Gradient Descent and Parallelization
+Title: Logistic Regression using Gradient Descent Optimisation
 Version: 0.0.0.9000
 Authors@R: c(
     person(given = "Romain", family = "Dudoit", email = "romain.dudoit@univ-lyon2.fr", role = c("aut","cre")),
     person(given = "Pierre", family = "Le Galeze", email = "first.last@example.com", role = "aut"),  
     person(given = "Chloe", family = "Danet", role = "aut"))
-Description: Perform Logistic Regression with Gradient Descent and Parallelization.
+Description: Perform Logistic Regression using gradient descent optimisation (batch, online, mini-batch). Parallelisation computing can be performed on batch mode. 
 License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)

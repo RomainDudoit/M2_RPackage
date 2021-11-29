@@ -19,7 +19,7 @@ rlgd.fit(
 \arguments{
 \item{formula}{object of class formula e.g y ~ a + b}
 
-\item{data}{a dataframe}
+\item{data}{a data frame}
 
 \item{mode}{the gradient descent method used to fit the model : "batch", "online" or "mini-batch"}
 
@@ -41,6 +41,15 @@ an instance of the class Reg.log
 \description{
 This function perform binary logistic regression using gradient descent optimization (batch, online or mini-batch). It can use
 parallel computing for batch mode.
+}
+\details{
+Test ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+
+TES32 ddddddddddddddddddddddddddddddddddddddddddddddddddddd
+dddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ddddddddddddddddddddddddddddddddddddddddddddddddddddd
 }
 \examples{
 rlgd.fit(classe ~ .,breast_cancer,"batch",batch_size = 32,

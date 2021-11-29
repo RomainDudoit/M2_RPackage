@@ -30,10 +30,12 @@ on new data.
 This function is part of the rlgd.fit() function of this package and is used to perform several preprocessing steps.
 }
 \details{
-It identify the \eqn{X} features and \eqn{y} target variable from the formula input.
+The function identify the \eqn{X} features and \eqn{y} target variable from the formula input.
 After transforming the potential character variables into factor, a model matrix is created from the formula.
+
 The model matrix is the matrix that contains in the first column the intercept and the features of
 the formula in the others columns. One hot encoding is automatically performed on factors during the creation of the model matrix.
+
 The function can also perform standardization on continuous or no binary (0,1) numeric variables with the preprocess function of the caret package.
 This function also check if the target variable is only binary since the package cannot do multinomial logistic regression.
 }

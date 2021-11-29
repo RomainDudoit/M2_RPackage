@@ -7,7 +7,11 @@
 #' @return matrix of dimension m x 1 equal to (1 / (1 + exp(-x%*%theta)))
 #' @export
 #'
-#' @seealso \code{\link{sigmoid}} \code{\link{x_dot_theta}}
+#' @seealso
+#' \itemize{
+#'   \item \code{\link{sigmoid}}
+#'   \item \code{\link{x_dot_theta}}
+#' }
 #'
 #' @examples
 #' x <- as.matrix(breast_cancer[1:10,1:4])
