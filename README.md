@@ -9,17 +9,6 @@ In the R console, after the installation of the "devtools" library, copy paste t
 
     devtools::install_github(repo='Romain8816/M2_RPackage/rlgd',build_vignettes = TRUE)
 
-Description and help of the package
-----------------------
-In the R console : 
-
-    help(package = 'rlgd')
-    
-<img src="other_screenshots/help_package.png" height="500"/>  
-
-You will find a vignette that show an example of how you can use the package and have access to the help of all the functions.   
-You can also use **help(name_function)** or **?name_function** , example: **?rlgd.fit**.
-
 Tutorial for package usage
 --------------------------
 
@@ -39,7 +28,20 @@ The breast_cancer dataset includes information on patient cells and contains 9 e
 
 The dataset is therefore in the *breast_cancer* object, so we can start fitting our linear model.
 
+### Help
+In the R console : 
+
+    help(package = 'rlgd')
+    
+<img src="other_screenshots/help_package.png" height="500"/>  
+
+You will find a vignette that show an example of how you can use the package and have access to the help of all the functions.   
+You can also use **help(name_function)** or **?name_function** , example: **?rlgd.fit**.
+
+
 **Note: If you are unsure about a function, use **help(name_function)** or **?name_function** , example: **?fit**.
+
+
 
 ------------------------------------------------------------------------
 
