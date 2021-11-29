@@ -15,7 +15,7 @@ In the R console :
 
     help(package = 'rlgd')
     
-![](Other screenshots/help_package.png)  
+![](other_screenshots/help_package.png)  
 
 Tutorial for package usage
 --------------------------
