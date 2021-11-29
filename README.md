@@ -16,7 +16,9 @@ In the R console :
     help(package = 'rlgd')
     
 <img src="other_screenshots/help_package.png" height="500"/>  
-![](other_screenshots/help_package.png)  
+
+You will find a vignette that show an example of how you can use the package and have access to the help of all the functions.
+You can also use **help(name_function)** or **?name_function** , example: **?rlgd.fit**.
 
 Tutorial for package usage
 --------------------------
