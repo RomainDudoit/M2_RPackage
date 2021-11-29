@@ -46,7 +46,7 @@ Data preparation
 
 ### Separation of training and test samples
 
-For the example tests to follow, we divide our dataset into two samples: training sample and test sample.
+For the example tests to follow, using "caret" library, we divide our dataset into two samples: training sample and test sample. 
 
     set.seed(10)
     train_index <- createDataPartition(breast_cancer$classe, p = 0.7, list = F)
